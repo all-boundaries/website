@@ -52,8 +52,8 @@ export const SIDEBAR: Sidebar = {
 		],
 		'Applications': [
             { text: 'Architecture', link: 'en/architecture' },
-            { text: 'Spring with Java', link: 'en/java-spring/service' },
-            { text: 'Next.js with TypeScript', link: 'en/nextjs/service' }
+            { text: 'Coffee store', link: 'en/java-spring/service' },
+            { text: 'Simple store', link: 'en/nextjs/service' }
         ],
 	},
 };
