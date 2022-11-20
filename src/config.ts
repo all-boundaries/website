@@ -1,5 +1,5 @@
 export const SITE = {
-	title: 'all)boundaries)',
+	title: 'all boundaries',
 	description: 'Talking about boundaries in software, architecture, organisations, etc',
 	defaultLanguage: 'en_UK',
 };
