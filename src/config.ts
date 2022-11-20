@@ -1,7 +1,7 @@
 export const SITE = {
-	title: 'Documentation',
-	description: 'Your website description.',
-	defaultLanguage: 'en_US',
+	title: 'all)boundaries)',
+	description: 'Talking about boundaries in software, architecture, organisations, etc',
+	defaultLanguage: 'en_UK',
 };
 
 export const OPEN_GRAPH = {
@@ -11,7 +11,7 @@ export const OPEN_GRAPH = {
 			'astro logo on a starry expanse of space,' +
 			' with a purple saturn-like planet floating in the right foreground',
 	},
-	twitter: 'astrodotbuild',
+	twitter: '',
 };
 
 // This is the type of the frontmatter you put in the docs markdown files.
@@ -30,9 +30,9 @@ export const KNOWN_LANGUAGES = {
 } as const;
 export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
 
-export const GITHUB_EDIT_URL = `https://github.com/withastro/astro/tree/main/examples/docs`;
+export const GITHUB_EDIT_URL = `https://github.com/all-boundaries/website`;
 
-export const COMMUNITY_INVITE_URL = `https://astro.build/chat`;
+//export const COMMUNITY_INVITE_URL = `https://astro.build/chat`;
 
 // See "Algolia" section of the README for more information.
 export const ALGOLIA = {
@@ -47,11 +47,11 @@ export type Sidebar = Record<
 >;
 export const SIDEBAR: Sidebar = {
 	en: {
-		'Section Header': [
+		'Main': [
 			{ text: 'Introduction', link: 'en/introduction' },
 			{ text: 'Page 2', link: 'en/page-2' },
 			{ text: 'Page 3', link: 'en/page-3' },
 		],
-		'Another Section': [{ text: 'Page 4', link: 'en/page-4' }],
+		'Not main': [{ text: 'Page 4', link: 'en/page-4' }],
 	},
 };
