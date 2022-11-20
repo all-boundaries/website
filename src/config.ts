@@ -52,6 +52,10 @@ export const SIDEBAR: Sidebar = {
 			{ text: 'Page 2', link: 'en/page-2' },
 			{ text: 'Page 3', link: 'en/page-3' },
 		],
-		'Not main': [{ text: 'Page 4', link: 'en/page-4' }],
+		'Applications': [
+            { text: 'Architecture', link: 'en/architecture' },
+            { text: 'Spring with Java', link: 'en/java-spring/service' },
+            { text: 'Next.js with TypeScript', link: 'en/nextjs/service' }
+        ],
 	},
 };
