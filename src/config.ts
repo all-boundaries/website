@@ -49,8 +49,6 @@ export const SIDEBAR: Sidebar = {
 	en: {
 		'Main': [
 			{ text: 'Introduction', link: 'en/introduction' },
-			{ text: 'Page 2', link: 'en/page-2' },
-			{ text: 'Page 3', link: 'en/page-3' },
 		],
 		'Applications': [
             { text: 'Architecture', link: 'en/architecture' },
