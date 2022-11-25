@@ -409,3 +409,8 @@ h2.heading {
 .current-header-link a {
 	color: var(--theme-text);
 }
+
+/* excalidraw svg */
+:root.theme-dark svg {
+    filter: invert(93%) hue-rotate(180deg);
+}
