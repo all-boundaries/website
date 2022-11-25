@@ -5,6 +5,8 @@ layout: ../../layouts/MainLayout.astro
 ---
 import DistributedSystem01 from "../../components/ServiceBoundaries/DistributedSystem01.astro";
 import ServiceOneConcept from "../../components/ServiceBoundaries/ServiceOneConcept.astro";
+import ServiceOneHttp from "../../components/ServiceBoundaries/ServiceOneHttp.astro";
+import ServiceOneClosedBox from "../../components/ServiceBoundaries/ServiceOneClosedBox.astro";
 
 The system below will be the basis to talk about boundaries between teams,
 services and external dependencies.
@@ -45,8 +47,76 @@ dependencies:
 Some of the dependencies are of the same type, both 3 and 4, are integrations
 through HTTP, they can leverage the same approach for testing.
 
-Conceptually, the testing boundaries for **Service one** looks like this:
+Conceptually, the external testing boundaries for **Service one** looks like
+this:
 
 <div style="text-align: center;">
     <ServiceOneConcept />
 </div>
+
+#### HTTP-based dependencies
+
+First you need to guarantee that the code interacting with the dependency is
+well tested for all expected scenarios (a.k.a happy and unhappy).
+
+<div style="text-align: center;">
+    <ServiceOneHttp />
+</div>
+
+Here is where the contract tests are set up from the consumer side.
+
+As shown in the picture, a class called `ServiceTwoClient` handles the
+interaction with `Service two`.
+
+> [Check Pact's example][pact_junit5] while the custom built example isn't in
+> place.
+
+You may complement the pact tests with extra unit tests to check aspects of the
+code that aren't strictly tied to the contract with the dependency.
+
+<details>
+    <summary>Abstraction patterns: `Client` vs `Gateway`</summary>
+
+##### Client
+
+`*Client` classes represents exactly what the provider offers. It will have a
+method for each of the endpoints the provider have and the return type will be
+exactly the response of the provider or a subset of it, when not using all the
+information.
+
+###### Example
+
+| Provider endpoint | Client method                         |
+|-------------------|---------------------------------------|
+| `GET /products`   | `products(): ProductsResponse`        |
+| `POST /products`  | `createProduct(CreateProductRequest): CreateProductResponse` |
+
+##### Gateway
+
+`*Gateway` classes abstracts the interaction with an external service and
+translates the external representation to something that is relevant to the
+service _(Read a more elaborated explanation [here][m_gateway])_.
+
+###### Example
+
+| Provider endpoint | Gateway method                         |
+|-------------------|---------------------------------------|
+| `GET /products`   | `products(): Products`        |
+| `POST /products`  | `createProduct(SimpleProduct): Product` |
+
+<br />
+`Products`, `SimpleProduct` and `Product` are classes created by **Team A**
+focusing on the domain model for `Service one`.
+
+</details>
+
+With that in place, you can think about the closed-box testing approach with a
+HTTP-based dependency.
+
+
+<div style="text-align: center;">
+    <ServiceOneClosedBox />
+</div>
+
+[pact_junit5]: https://docs.pact.io/implementation_guides/jvm/consumer/junit5
+[m_gateway]: https://martinfowler.com/articles/gateway-pattern.html
