@@ -17,5 +17,5 @@ export default defineConfig({
       react(),
       mdx()
   ],
-  site: `http://astro.build`
+  site: `https://all-boundaries.pages.dev`
 });
