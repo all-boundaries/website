@@ -19,7 +19,7 @@ The focus for this section is **Team A** and **Service one**. As illustrated in
 the diagram, the team's responsibility is to ensure that **Service one** works
 as expected.
 
-### Context
+## Context
 
 In a distributed system architecture, a service typically can't provide all the
 value by itself. This leads to integrations with other members of the
@@ -34,7 +34,7 @@ enables everyone to see what each one is responsible for and where the lines are
 drawn leading to frutful discussions on how to guarantee the integration works
 as expected.
 
-### Service one integrations
+## Service one integrations
 
 In the spirit of making the implict explicit, let's list out the external
 dependencies:
@@ -54,7 +54,7 @@ this:
     <ServiceOneConcept />
 </div>
 
-#### HTTP-based dependencies
+### HTTP-based dependencies
 
 First you need to guarantee that the code interacting with the dependency is
 well tested for all expected scenarios (a.k.a happy and unhappy).
@@ -77,27 +77,27 @@ code that aren't strictly tied to the contract with the dependency.
 <details>
     <summary>Abstraction patterns: `Client` vs `Gateway`</summary>
 
-##### Client
+#### Client
 
 `*Client` classes represents exactly what the provider offers. It will have a
 method for each of the endpoints the provider have and the return type will be
 exactly the response of the provider or a subset of it, when not using all the
 information.
 
-###### Example
+##### Example
 
 | Provider endpoint | Client method                         |
 |-------------------|---------------------------------------|
 | `GET /products`   | `products(): ProductsResponse`        |
 | `POST /products`  | `createProduct(CreateProductRequest): CreateProductResponse` |
 
-##### Gateway
+#### Gateway
 
 `*Gateway` classes abstracts the interaction with an external service and
 translates the external representation to something that is relevant to the
 service _(Read a more elaborated explanation [here][m_gateway])_.
 
-###### Example
+##### Example
 
 | Provider endpoint | Gateway method                         |
 |-------------------|---------------------------------------|

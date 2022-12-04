@@ -10,7 +10,7 @@ import mdx from "@astrojs/mdx";
 export default defineConfig({
   markdown: {
     extendDefaultPlugins: true,
-    remarkPlugins: [remarkSimplePlantumlPlugin]
+    remarkPlugins: [remarkSimplePlantumlPlugin],
   },
   integrations: [
       preact(),
