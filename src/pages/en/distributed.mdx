@@ -5,6 +5,7 @@ layout: ../../layouts/MainLayout.astro
 ---
 import DistributedSystem01 from "../../components/ServiceBoundaries/DistributedSystem01.astro";
 import ServiceOneConcept from "../../components/ServiceBoundaries/ServiceOneConcept.astro";
+import ServiceOneDatabase from "../../components/ServiceBoundaries/ServiceOneDatabase.astro";
 import ServiceOneHttp from "../../components/ServiceBoundaries/ServiceOneHttp.astro";
 import ServiceOneClosedBox from "../../components/ServiceBoundaries/ServiceOneClosedBox.astro";
 
@@ -110,6 +111,12 @@ focusing on the domain model for `Service one`.
 
 </details>
 
+
+### Database
+
+<div style="text-align: center;">
+    <ServiceOneDatabase />
+</div>
 With that in place, you can think about the closed-box testing approach with a
 HTTP-based dependency.
 
