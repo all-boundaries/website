@@ -7,6 +7,7 @@ import DistributedSystem01 from "../../components/ServiceBoundaries/DistributedS
 import ServiceOneConcept from "../../components/ServiceBoundaries/ServiceOneConcept.astro";
 import ServiceOneDatabase from "../../components/ServiceBoundaries/ServiceOneDatabase.astro";
 import ServiceOneHttp from "../../components/ServiceBoundaries/ServiceOneHttp.astro";
+import ServiceOneStreamingPlatform from "../../components/ServiceBoundaries/ServiceOneStreamingPlatform.astro";
 import ServiceOneClosedBox from "../../components/ServiceBoundaries/ServiceOneClosedBox.astro";
 
 The system below will be the basis to talk about boundaries between teams,
@@ -117,9 +118,17 @@ focusing on the domain model for `Service one`.
 <div style="text-align: center;">
     <ServiceOneDatabase />
 </div>
+
+### Streaming platform
+
+<div style="text-align: center;">
+    <ServiceOneStreamingPlatform />
+</div>
+
+### Closed-box
+
 With that in place, you can think about the closed-box testing approach with a
 HTTP-based dependency.
-
 
 <div style="text-align: center;">
     <ServiceOneClosedBox />
