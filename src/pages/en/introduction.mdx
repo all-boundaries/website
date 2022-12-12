@@ -1,0 +1,32 @@
+---
+title: Introduction
+description: Docs intro
+layout: ../../layouts/MainLayout.astro
+---
+import DistributedSystem01 from "../../components/ServiceBoundaries/DistributedSystem01.astro";
+
+The system below will be the basis to talk about boundaries between teams,
+services and external dependencies.
+
+<div style="text-align: center;">
+    <DistributedSystem01 />
+</div>
+
+The focus for this section is **Team A** and **Service one**. As illustrated in
+the diagram, the team's responsibility is to ensure that **Service one** works
+as expected.
+
+## Context
+
+In a distributed system architecture, a service typically can't provide all the
+value by itself. This leads to integrations with other members of the
+ecosystem increasing the communication needs and the system complexity.
+
+The bigger the system, the more integrations will exist. A team will never going
+to be able to know the details of the whole system however the team should be an
+expert on how their service works and in what it provides.
+
+Making the team and service boundary explicit is critical for success. It
+enables everyone to see what each one is responsible for and where the lines are
+drawn leading to frutful discussions on how to guarantee the integration works
+as expected.

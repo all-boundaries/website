@@ -184,6 +184,11 @@ known consumer to collaborate with, here is how the contract came to life.
 3. Shared with the known consumer for initial feedback
 4. Agreed that it is a good start
 
+> **Team boundary**
+>
+> Collaborating on the contract between two groups of people, each with a
+> specific responsibility within the larger ecosystem.
+
 [repo]: https://github.com/all-boundaries/coffee-store
 [gradle]: https://gradle.org/install
 [java]: https://adoptium.net

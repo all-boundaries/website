@@ -47,13 +47,15 @@ export type Sidebar = Record<
 >;
 export const SIDEBAR: Sidebar = {
 	en: {
-		'Patterns': [
-			{ text: 'Distributed services', link: 'en/distributed' },
-		],
-		'Applications': [
-            { text: 'Architecture', link: 'en/architecture' },
-            { text: 'Coffee store', link: 'en/java-spring/service' },
-            { text: 'Simple store', link: 'en/nextjs/service' }
+        '👋': [
+            { text: 'Introduction', link: 'en/introduction' }
         ],
+		'Service one': [
+			{ text: 'Context', link: 'en/serviceone/context' },
+			{ text: 'HTTP-based', link: 'en/serviceone/http' },
+			{ text: 'Database', link: 'en/serviceone/database' },
+			{ text: 'Streaming', link: 'en/serviceone/streaming' },
+			{ text: 'Closed-box', link: 'en/serviceone/closedbox' },
+		],
 	},
 };

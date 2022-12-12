@@ -1,0 +1,24 @@
+---
+title: Context
+description: Service one context and responsibility
+layout: ../../../layouts/MainLayout.astro
+---
+import ServiceOneConcept from "../../../components/ServiceBoundaries/ServiceOneConcept.astro";
+
+In the spirit of making the implict explicit, let's list out the external
+dependencies:
+
+1. Database (PostgreSQL)
+2. Service two (HTTP)
+3. 3rd-party SaaS (HTTP)
+4. Streaming platform (TCP)
+
+Some of the dependencies are of the same type, both 3 and 4, are integrations
+through HTTP, they can leverage the same approach for testing.
+
+Conceptually, the external testing boundaries for **Service one** looks like
+this:
+
+<div style="text-align: center;">
+    <ServiceOneConcept />
+</div>

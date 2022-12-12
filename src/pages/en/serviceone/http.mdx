@@ -1,36 +1,9 @@
 ---
-title: Distributed system
+title: HTTP-based dependencies
 description: Boundaries and testing patterns for distributed systems
-layout: ../../layouts/MainLayout.astro
+layout: ../../../layouts/MainLayout.astro
 ---
-import DistributedSystemSynthetic from "../../components/ServiceBoundaries/DistributedSystemSynthetic.astro";
-import ServiceOneConcept from "../../components/ServiceBoundaries/ServiceOneConcept.astro";
-import ServiceOneDatabase from "../../components/ServiceBoundaries/ServiceOneDatabase.astro";
-import ServiceOneHttp from "../../components/ServiceBoundaries/ServiceOneHttp.astro";
-import ServiceOneStreamingPlatform from "../../components/ServiceBoundaries/ServiceOneStreamingPlatform.astro";
-import ServiceOneClosedBox from "../../components/ServiceBoundaries/ServiceOneClosedBox.astro";
-
-## Service one integrations
-
-In the spirit of making the implict explicit, let's list out the external
-dependencies:
-
-1. Database (PostgreSQL)
-2. Service two (HTTP)
-3. 3rd-party SaaS (HTTP)
-4. Streaming platform (TCP)
-
-Some of the dependencies are of the same type, both 3 and 4, are integrations
-through HTTP, they can leverage the same approach for testing.
-
-Conceptually, the external testing boundaries for **Service one** looks like
-this:
-
-<div style="text-align: center;">
-    <ServiceOneConcept />
-</div>
-
-### HTTP-based dependencies
+import ServiceOneHttp from "../../../components/ServiceBoundaries/ServiceOneHttp.astro";
 
 First you need to guarantee that the code interacting with the dependency is
 well tested for all expected scenarios (a.k.a happy and unhappy).
@@ -85,28 +58,6 @@ service _(Read a more elaborated explanation [here][m_gateway])_.
 focusing on the domain model for `Service one`.
 
 </details>
-
-
-### Database
-
-<div style="text-align: center;">
-    <ServiceOneDatabase />
-</div>
-
-### Streaming platform
-
-<div style="text-align: center;">
-    <ServiceOneStreamingPlatform />
-</div>
-
-### Closed-box
-
-With that in place, you can think about the closed-box testing approach with a
-HTTP-based dependency.
-
-<div style="text-align: center;">
-    <ServiceOneClosedBox />
-</div>
 
 [pact_junit5]: https://docs.pact.io/implementation_guides/jvm/consumer/junit5
 [m_gateway]: https://martinfowler.com/articles/gateway-pattern.html
