@@ -53,7 +53,7 @@ export const SIDEBAR: Sidebar = {
 		'Service one': [
 			{ text: 'Context', link: 'en/serviceone/context' },
 			{ text: 'HTTP-based', link: 'en/serviceone/http' },
-			{ text: 'Database', link: 'en/serviceone/database' },
+			{ text: 'Persistence', link: 'en/serviceone/persistence' },
 			{ text: 'Streaming', link: 'en/serviceone/streaming' },
 			{ text: 'Closed-box', link: 'en/serviceone/closedbox' },
 		],
