@@ -1,0 +1,4 @@
+[[footer]]
+   name = "Service"
+   pageRef = "service"
+   weight = 10

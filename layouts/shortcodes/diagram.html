@@ -1,0 +1,8 @@
+{{ $diagram := resources.Get (printf "img/diagram/%s.svg" ($.Get "name")) }}
+{{ if $diagram }}
+    <article class="diagram">
+        {{ $diagram.Content | safeHTML }}
+    </article>
+{{ else }}
+  {{ errorf `Shortcode "diagram" error in "%s": Resource "%s" not found. Check the path is correct or remove the shortcode.` ($.Get "name") }}
+{{ end }}

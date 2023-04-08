@@ -1,0 +1,10 @@
+title = "All Boundaries"
+
+[author]
+name = "All Boundaries"
+#image = "img/logo.png"
+headline = "Exploring organisation and software boundaries."
+links = [
+#  { github = "https://github.com/all-boundaries/website" }
+]
+

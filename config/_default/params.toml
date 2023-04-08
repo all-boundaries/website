@@ -1,0 +1,46 @@
+colorScheme = "fire"
+defaultAppearance = "dark"
+autoSwitchAppearance = true
+
+#logo = "img/logo.png"
+
+highlightCurrentMenuArea = true
+smartTOC = true
+smartTOCHideUnfocusedChildren = true
+
+[homepage]
+layout = "profile"
+
+[header]
+  layout = "basic" # valid options: basic, fixed, fixed-fill, fixed-fill-blur
+
+[footer]
+  showMenu = false
+  showCopyright = true
+  showThemeAttribution = true
+  showAppearanceSwitcher = true
+  showScrollToTop = true
+
+[article]
+  showDate = false
+  showViews = false
+  showLikes = false
+  showDateUpdated = true
+  showAuthor = false
+  showHero = false
+  heroStyle = "background" # valid options: basic, big, background, thumbAndBackground
+  layoutBackgroundBlur = true # only used when heroStyle equals background
+  showBreadcrumbs = false
+  showDraftLabel = true
+  showEdit = false
+  editAppendPath = false
+  seriesOpened = false
+  showHeadingAnchors = true
+  showPagination = false
+  invertPagination = false
+  showReadingTime = false
+  showTableOfContents = true
+  showTaxonomies = true 
+  showAuthorsBadges = false 
+  showWordCount = false
+  showSummary = false
