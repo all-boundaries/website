@@ -13,7 +13,6 @@ metadata:
   description: Tech blob on testing and software design
   annotations:
     backstage.io/source-location: url:https://github.com/all-boundaries/website
-    backstage.io/techdocs-ref: url:https://github.com/all-boundaries/website/blob/main
     github.com/project-slug: all-boundaries/website
   tags:
     - hugo
