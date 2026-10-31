@@ -1,0 +1,23 @@
+---
+// One flat geometric construction per family of boundaries; the only imagery on the site.
+const { family, size = 240 } = Astro.props as { family?: string; size?: number };
+---
+<svg class="motif" width={size} height={size} viewBox="0 0 240 240" role="img" aria-label={family ? `Motif for ${family.replace(/-/g, ' ')}` : undefined} aria-hidden={family ? undefined : 'true'}>
+  {family === 'inside-a-service' && (<>
+    <rect x="12" y="12" width="216" height="216" fill="none" stroke="currentColor" stroke-width="12" />
+    <rect x="60" y="60" width="120" height="120" fill="none" stroke="currentColor" stroke-width="12" />
+    <rect x="102" y="102" width="36" height="36" fill="var(--sl-color-accent)" />
+  </>)}
+  {family === 'between-services' && (<>
+    <rect x="12" y="60" width="84" height="120" fill="none" stroke="currentColor" stroke-width="12" />
+    <rect x="144" y="60" width="84" height="120" fill="none" stroke="currentColor" stroke-width="12" />
+    <rect x="72" y="108" width="96" height="24" fill="var(--sl-color-accent)" />
+  </>)}
+  {family === 'across-teams' && (<>
+    <path d="M12 228 V12 A216 216 0 0 1 228 228 Z" fill="currentColor" />
+    <rect x="144" y="12" width="84" height="84" fill="var(--sl-color-accent)" />
+  </>)}
+</svg>
+<style>
+  .motif { color: var(--sl-color-white); display: block; }
+</style>

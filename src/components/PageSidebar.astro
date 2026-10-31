@@ -1,0 +1,10 @@
+---
+import Default from '@astrojs/starlight/components/PageSidebar.astro';
+import FamilyMotif from './FamilyMotif.astro';
+const family = Astro.locals.starlightRoute.entry.data.family as string | undefined;
+---
+{family && <div class="motif-slot sl-hidden lg:sl-block"><FamilyMotif {family} size={150} /></div>}
+<Default><slot /></Default>
+<style>
+  .motif-slot { padding: 1.5rem var(--sl-sidebar-pad-x) 0 2.875rem; }
+</style>

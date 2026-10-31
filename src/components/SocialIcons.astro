@@ -1,0 +1,21 @@
+---
+// Header control: shows the 12-module grid that every page is set on.
+---
+<button type="button" class="grid-toggle" aria-pressed="false" data-grid-toggle>Grid</button>
+<style>
+  .grid-toggle { font: 700 var(--sl-text-xs)/1 var(--__sl-font); letter-spacing: 0.08em; text-transform: uppercase; color: var(--sl-color-gray-3);
+    background: none; border: 0; padding: 0.5rem 0.25rem; cursor: pointer; background: linear-gradient(transparent, transparent) left bottom / 100% 3px no-repeat; }
+  .grid-toggle:hover { color: var(--sl-color-white); }
+  .grid-toggle[aria-pressed='true'] { color: var(--sl-color-white); background-image: linear-gradient(var(--sl-color-accent), var(--sl-color-accent)); }
+</style>
+<script>
+  const key = 'ab-grid';
+  const btn = document.querySelector<HTMLButtonElement>('[data-grid-toggle]');
+  const set = (on: boolean) => {
+    document.documentElement.toggleAttribute('data-grid', on);
+    btn?.setAttribute('aria-pressed', String(on));
+    try { localStorage.setItem(key, on ? '1' : '0'); } catch {}
+  };
+  set((() => { try { return localStorage.getItem(key) === '1'; } catch { return false; } })());
+  btn?.addEventListener('click', () => set(!document.documentElement.hasAttribute('data-grid')));
+</script>

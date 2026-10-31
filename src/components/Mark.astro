@@ -1,0 +1,8 @@
+---
+// A boundary crossed: an outlined square with a solid red square straddling its corner.
+const { size = 28 } = Astro.props;
+---
+<svg width={size} height={size} viewBox="0 0 28 28" aria-hidden="true" focusable="false">
+  <rect x="2" y="2" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" />
+  <rect x="12" y="12" width="14" height="14" fill="var(--sl-color-accent)" />
+</svg>

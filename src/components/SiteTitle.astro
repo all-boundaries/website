@@ -1,0 +1,13 @@
+---
+import Mark from './Mark.astro';
+const { siteTitleHref } = Astro.locals.starlightRoute;
+---
+<a href={siteTitleHref} class="wordmark" translate="no">
+  <Mark />
+  <span>All Boundaries</span>
+</a>
+<style>
+  .wordmark { display: inline-flex; align-items: center; gap: 0.75rem; color: var(--sl-color-white); text-decoration: none;
+    font-weight: 800; font-size: var(--sl-text-sm); letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
+  .wordmark span { padding-block: 0.35rem 0.2rem; background: linear-gradient(var(--sl-color-accent), var(--sl-color-accent)) left bottom / 100% 5px no-repeat; }
+</style>

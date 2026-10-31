@@ -57,3 +57,10 @@ Temporary Items
 node_modules/
 dist/
 .astro/
+
+### Impeccable (transient) ###
+.impeccable/mocks/
+.impeccable/questions/
+.impeccable/review/
+.impeccable/round1.json
+.impeccable/config.local.json

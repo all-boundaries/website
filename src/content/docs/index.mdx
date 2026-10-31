@@ -2,22 +2,9 @@
 title: All Boundaries
 description: Practical patterns for testing and designing software boundaries, with real examples and a companion repository.
 template: splash
-hero:
-  tagline: Practical patterns for the places where code, services and teams meet. Real examples, lots of diagrams, readable by people and by LLMs.
-  actions:
-    - text: Meet the running example
-      link: /start/the-coffee-subscription/
-      icon: right-arrow
-    - text: Browse patterns
-      link: /patterns/inside-a-service/domain/
-      variant: minimal
+editUrl: false
 ---
 
-import { CardGrid, Card } from '@astrojs/starlight/components';
+import Cover from '../../components/Cover.astro';
 
-<CardGrid>
-  <Card title="By problem" icon="magnifier">Start from a symptom, such as a renamed field breaking production, and find the pattern.</Card>
-  <Card title="By boundary" icon="puzzle">Domain, use case, persistence, gateways, contracts. Each has a test boundary.</Card>
-  <Card title="By journey" icon="open-book">Follow a curated reading order from one service to several teams.</Card>
-  <Card title="With AI" icon="rocket">`/llms.txt`, markdown twins under `/raw/`, and installable skills under `/skills/`.</Card>
-</CardGrid>
+<Cover />
