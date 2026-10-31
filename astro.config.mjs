@@ -40,6 +40,7 @@ export default defineConfig({
       components: {
         SiteTitle: './src/components/SiteTitle.astro',
         SocialIcons: './src/components/SocialIcons.astro',
+        Footer: './src/components/Footer.astro',
         PageTitle: './src/components/PageTitle.astro',
       },
       editLink: { baseUrl: 'https://github.com/all-boundaries/website/edit/main/' },

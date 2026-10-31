@@ -116,7 +116,7 @@ header.header { border-bottom: 1px solid var(--sl-color-gray-5); }
 /* Diagrams: always a light panel with navy ink, so authored pale fills stay legible in both themes */
 .sl-markdown-content svg[id^='mermaid'] {
   --sl-color-white: #0b1f3a; --sl-color-black: #ffffff; --sl-color-gray-4: #8a9bb5; --sl-color-gray-5: #d5deea; --sl-color-gray-6: #e8eef6; --sl-color-accent: #5b4cf0;
-  display: block; width: 100%; height: auto; margin-block: 2rem; padding: 1.5rem; background: #f6f9fc; border: 1px solid #d5deea; border-radius: 12px;
+  display: block; width: 100%; height: auto; margin-block: 0; padding: 1.5rem; background: #f6f9fc; border: 1px solid #d5deea; border-radius: 12px;
 }
 
 /* Right rail */
@@ -135,3 +135,5 @@ site-search button, starlight-theme-select select, mobile-starlight-toc summary,
 /* Splash: the empty title panel leaves a stray rule */
 :root:not([data-has-sidebar]) .content-panel + .content-panel { border-top: 0; }
 :root:not([data-has-sidebar]) .content-panel:first-child { padding: 0; }
+
+.diagram-home { margin-block: 2rem; }
