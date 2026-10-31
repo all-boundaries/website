@@ -10,12 +10,12 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: all-boundaries-web
-  description: Tech blob on testing and software design
+  description: Practical patterns for software boundaries
   annotations:
     backstage.io/source-location: url:https://github.com/all-boundaries/website
     github.com/project-slug: all-boundaries/website
   tags:
-    - hugo
+    - astro
   links:
     - url: https://allboundaries.net/
       title: All Boundaries

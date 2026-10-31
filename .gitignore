@@ -53,3 +53,8 @@ Temporary Items
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,hugo
 
+
+### Astro / Node ###
+node_modules/
+dist/
+.astro/

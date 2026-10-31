@@ -1,0 +1,14 @@
+[tools]
+agent-browser = "latest"
+node = "24"
+pnpm = "11"
+d2 = "latest"
+
+[tasks.dev]
+run = "pnpm dev"
+
+[tasks.build]
+run = "pnpm build"
+
+[tasks.check]
+run = "pnpm check"
