@@ -1,7 +1,15 @@
 ---
-title: "Environments and \"can I deploy?\""
+title: "Deployment gates with can-i-deploy"
 id: between-services.deployment-gates
 family: between-services
+description: "Stop a bad deploy by asking the broker whether this version is verified against what is in the target environment."
+related: [between-services.consumer-driven-contracts, between-services.contract-drift]
+agent:
+  use_when: "pacts and verifications exist but nothing yet stops an incompatible version reaching an environment"
+  checklist:
+    - "Every pipeline runs can-i-deploy before deploying"
+    - "Record the deployment after it happens"
+    - "Check rollback against the same gate"
 ---
 
 

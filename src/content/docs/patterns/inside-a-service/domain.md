@@ -2,6 +2,15 @@
 title: "Domain logic"
 id: inside-a-service.domain
 family: inside-a-service
+description: "Keep business rules in one dependency-free place, away from routes, listeners and jobs."
+tests: [domain-test]
+related: [inside-a-service.use-case]
+agent:
+  use_when: "business rules (renewals, grace periods, cancellation) are scattered across handlers, listeners and jobs"
+  checklist:
+    - "Rules live in domain objects with no dependencies on I/O"
+    - "Every delivery path (HTTP, message, job) reaches the same rule"
+    - "Domain tests run sociable, with nothing replaced"
 ---
 
 

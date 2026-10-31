@@ -2,6 +2,15 @@
 title: "Persistence"
 id: inside-a-service.persistence
 family: inside-a-service
+description: "Translate domain objects to rows and back, tested against the real database engine."
+tests: [persistence-test]
+related: [inside-a-service.use-case]
+agent:
+  use_when: "code reads and writes storage and mocks or in-memory substitutes hide column types, constraints and ordering bugs"
+  checklist:
+    - "Only this layer knows table and column names"
+    - "Test against a real database container, replacing nothing"
+    - "Cover null handling, date round-trips and constraints"
 ---
 
 

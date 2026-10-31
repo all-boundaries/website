@@ -1,7 +1,15 @@
 ---
-title: "Test Boundaries in the Channel"
+title: "Test boundaries in the channel"
 id: across-teams.test-boundaries
 family: across-teams
+description: "Name the test for each channel boundary: what is real, what is replaced, who owns it, when it runs."
+related: [across-teams.monorepo, inside-a-service.closed-box-test]
+agent:
+  use_when: "the channel layer needs the same named test boundaries the core services have"
+  checklist:
+    - "Each boundary has one named test and one owner"
+    - "State what is real and what is replaced"
+    - "Know when each runs in a trunk-based flow"
 ---
 
 Parts 1-3 gave every boundary of a service a named test. This page does the same for the channel layer: which boundaries exist in the monorepo, which test belongs to each, what is real and what is replaced, who owns it, and when it runs in a trunk-based flow.

@@ -1,7 +1,15 @@
 ---
-title: "Contracts: the processor and Subscriptions"
+title: "Contracts with the processor and Subscriptions"
 id: between-services.bidirectional-contracts
 family: between-services
+description: "Verify the contracts you can, and record an understanding where a third party will not verify."
+related: [between-services.consumer-driven-contracts]
+agent:
+  use_when: "a service sits between a team it serves and an external provider and contract tooling fits each differently"
+  checklist:
+    - "Verify the pacts consumers write about your API"
+    - "For an external processor, keep a recorded understanding, not a claimed contract"
+    - "Say which neighbour each guarantee comes from"
 ---
 
 

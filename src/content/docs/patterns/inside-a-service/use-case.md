@@ -2,6 +2,15 @@
 title: "Use case"
 id: inside-a-service.use-case
 family: inside-a-service
+description: "A short load, decide, store function callable from any entry point."
+tests: [use-case-test]
+related: [inside-a-service.domain, inside-a-service.persistence]
+agent:
+  use_when: "a rule must be reachable from several entry points and something has to load state, call the domain and store the result"
+  checklist:
+    - "Shape is load, decide, store (and publish when the outcome needs announcing)"
+    - "No business decisions here; the domain decides"
+    - "Test with the real domain and a real database; replace only a failing save by a spy"
 ---
 
 

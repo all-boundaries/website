@@ -1,7 +1,16 @@
 ---
-title: "Closed box"
+title: "Closed-box test"
 id: inside-a-service.closed-box-test
 family: inside-a-service
+description: "Run the whole service through real edges to catch bugs that live in the connections."
+tests: [closed-box-test]
+related: [inside-a-service.domain, inside-a-service.use-case, inside-a-service.outbound-http-gateway]
+agent:
+  use_when: "each part passes its own tests but bugs appear when the parts run together"
+  checklist:
+    - "Enter through a real edge and check another edge (response, stored state, message)"
+    - "Keep the number of these tests small"
+    - "State what this test cannot catch"
 ---
 
 

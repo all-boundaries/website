@@ -1,7 +1,16 @@
 ---
-title: "Messaging (inbound gateway)"
+title: "Inbound messaging gateway"
 id: inside-a-service.inbound-messaging
 family: inside-a-service
+description: "Receive, validate and translate a message into a domain call, and decide to acknowledge, retry or set aside."
+tests: [inbound-gateway-test-messaging]
+related: [inside-a-service.use-case, between-services.webhook-idempotency]
+agent:
+  use_when: "a service consumes messages that can arrive twice, out of order or malformed"
+  checklist:
+    - "Check the message before translating it into a domain call"
+    - "Deduplicate by recorded message id"
+    - "Acknowledge, retry or set aside explicitly; malformed messages are not retried forever"
 ---
 
 

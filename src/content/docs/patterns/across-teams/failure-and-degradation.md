@@ -1,7 +1,15 @@
 ---
-title: "Failure and Degradation"
+title: "Failure and degradation"
 id: across-teams.failure-and-degradation
 family: across-teams
+description: "Decide per page and step what partly working looks like, owned by the feature team."
+related: [between-services.error-classification, across-teams.integration-boundaries]
+agent:
+  use_when: "core services fail independently while the customer sees one page that must work or degrade clearly"
+  checklist:
+    - "The core service reports the kind of failure; the channel decides what the customer sees"
+    - "Write a degradation map per step"
+    - "Handle the pending charge state explicitly"
 ---
 
 ## Why This Is a Channel Problem

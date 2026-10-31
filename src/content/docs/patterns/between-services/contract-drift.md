@@ -2,6 +2,14 @@
 title: "Contract drift and breaking changes"
 id: between-services.contract-drift
 family: between-services
+description: "Use the broker to see which side is asking for a change and what it would break."
+related: [between-services.consumer-driven-contracts, between-services.deployment-gates]
+agent:
+  use_when: "a field or endpoint must be added, changed or removed across team boundaries"
+  checklist:
+    - "Reader needs something new: write the pact first, provider follows"
+    - "Sender removes something: the broker shows who still reads it"
+    - "Readers tolerate unknown fields"
 ---
 
 

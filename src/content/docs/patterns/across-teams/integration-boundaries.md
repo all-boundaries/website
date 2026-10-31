@@ -1,7 +1,15 @@
 ---
-title: "Integration Boundaries"
+title: "Integration boundaries"
 id: across-teams.integration-boundaries
 family: across-teams
+description: "Make ownership explicit and checked where a journey crosses teams."
+related: [across-teams.monorepo, across-teams.failure-and-degradation]
+agent:
+  use_when: "a customer journey crosses teams and nobody is clear who owns what"
+  checklist:
+    - "State each boundary as an ownership decision"
+    - "Keep contracts small"
+    - "Name who owns a journey that crosses teams"
 ---
 
 ## A Boundary Is a Decision About Ownership

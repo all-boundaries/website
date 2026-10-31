@@ -1,7 +1,15 @@
 ---
-title: "Team Interaction Patterns"
+title: "Team interaction patterns"
 id: across-teams.team-interaction-patterns
 family: across-teams
+description: "Choose collaboration, X-as-a-service or facilitation per pairing, and change it deliberately."
+related: [across-teams.platform-enables-autonomy, across-teams.ways-of-working]
+agent:
+  use_when: "it is unclear how two teams should work together, or a pairing feels wrong"
+  checklist:
+    - "Name the current mode for each team pairing"
+    - "Check the signals for being in the wrong mode"
+    - "Treat cognitive load as the constraint"
 ---
 
 ## Three Modes

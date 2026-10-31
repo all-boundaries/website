@@ -1,7 +1,15 @@
 ---
-title: "Synchronous Inbound + Asynchronous Outcome"
+title: "Synchronous call, asynchronous outcome"
 id: between-services.synchronous-inbound-pending
 family: between-services
+description: "Answer immediately with a pending charge, then report the real outcome by callback."
+related: [between-services.webhook-idempotency, inside-a-service.outbound-http-gateway]
+agent:
+  use_when: "a synchronous API must start work that completes later, such as charging a card through a processor"
+  checklist:
+    - "Respond at once with an id and status pending"
+    - "Deliver the real outcome by webhook"
+    - "Plan for failure modes between the answer and the outcome"
 ---
 
 

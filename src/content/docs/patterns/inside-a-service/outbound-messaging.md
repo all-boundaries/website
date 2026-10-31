@@ -1,7 +1,16 @@
 ---
-title: "Messaging (outbound gateway)"
+title: "Outbound messaging gateway"
 id: inside-a-service.outbound-messaging
 family: inside-a-service
+description: "Translate a domain event into the message format the broker and its readers expect."
+tests: [outbound-gateway-test-messaging]
+related: [inside-a-service.inbound-messaging, between-services.consumer-driven-contracts]
+agent:
+  use_when: "a service publishes events (renewed, cancelled) for readers it does not control"
+  checklist:
+    - "Domain events never carry broker details"
+    - "The message format is what readers depend on; record it as a contract"
+    - "Publishing does not wait for any reader"
 ---
 
 

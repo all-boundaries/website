@@ -1,7 +1,15 @@
 ---
-title: "Webhook Idempotency"
+title: "Webhook idempotency"
 id: between-services.webhook-idempotency
 family: between-services
+description: "Make a webhook handler safe to call twice by recording what it has processed."
+related: [between-services.error-classification, inside-a-service.inbound-http-gateway]
+agent:
+  use_when: "a webhook can arrive late, be retried or arrive twice"
+  checklist:
+    - "Record the event id before or with the effect"
+    - "A second delivery changes nothing"
+    - "Test duplicate and out-of-order delivery"
 ---
 
 

@@ -1,7 +1,15 @@
 ---
-title: "Ways of Working in the Channel Monorepo"
+title: "Ways of working in the channel monorepo"
 id: across-teams.ways-of-working
 family: across-teams
+description: "Keep shared deployment from becoming shared decision-making."
+related: [across-teams.monorepo, across-teams.team-interaction-patterns]
+agent:
+  use_when: "one repository and one deploy serve several teams and decisions risk becoming centralised"
+  checklist:
+    - "Ownership is per folder, decisions are per team"
+    - "Trunk-based with feedback that does not need pull requests"
+    - "Define testing responsibilities and incident handling"
 ---
 
 ## Shared Deployment Is Not Shared Decision-Making

@@ -2,6 +2,15 @@
 title: "Consumer-driven contracts with Pact"
 id: between-services.consumer-driven-contracts
 family: between-services
+description: "The reader of a message writes the pact; the sender verifies it."
+tests: [consumer-contract-test]
+related: [between-services.contract-drift, between-services.deployment-gates]
+agent:
+  use_when: "two teams test against stand-ins for each other and nothing links the stand-ins"
+  checklist:
+    - "The consumer records a pact from its own gateway tests"
+    - "The provider replays every pact against its real code"
+    - "Publish results to a broker"
 ---
 
 

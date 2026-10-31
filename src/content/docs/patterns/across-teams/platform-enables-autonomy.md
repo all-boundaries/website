@@ -1,7 +1,15 @@
 ---
-title: "How the Channel Platform Enables Autonomy"
+title: "Platform that enables autonomy"
 id: across-teams.platform-enables-autonomy
 family: across-teams
+description: "Give feature teams a small platform with few decisions and defined extension points."
+related: [across-teams.team-interaction-patterns, across-teams.integration-boundaries]
+agent:
+  use_when: "several teams ship into one product and the platform risks becoming either a bottleneck or an absent frame"
+  checklist:
+    - "The platform provides the frame, not feature decisions"
+    - "Extension points are the contract between platform and teams"
+    - "Watch for the platform turning into a queue"
 ---
 
 ## The Tension

@@ -1,7 +1,16 @@
 ---
-title: "HTTP (inbound gateway)"
+title: "Inbound HTTP gateway"
 id: inside-a-service.inbound-http-gateway
 family: inside-a-service
+description: "Receive a request, call a use case, map the result to a response; no decisions."
+tests: [inbound-gateway-test-http]
+related: [inside-a-service.use-case, between-services.webhook-idempotency]
+agent:
+  use_when: "an HTTP route or webhook handler contains, or is about to contain, business logic"
+  checklist:
+    - "Route parses input, calls one use case, maps the result to a response"
+    - "Test through a real server with the use case replaced"
+    - "Webhook handler deduplicates by recorded event id"
 ---
 
 

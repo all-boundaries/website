@@ -1,7 +1,15 @@
 ---
-title: "What the Monorepo Could Look Like"
+title: "Channel monorepo layout"
 id: across-teams.monorepo
 family: across-teams
+description: "A directory tree with one owner per folder, checked by dependency rules."
+related: [across-teams.integration-boundaries, across-teams.ways-of-working]
+agent:
+  use_when: "a customer-facing channel is built from several teams inside one repository and deploy"
+  checklist:
+    - "One owner per top-level folder"
+    - "Dependency rules are enforced by a boundary check"
+    - "Core services stay in their own repositories"
 ---
 
 The earlier pages say "a package per team" but never show the repository. This page does, because Conway's Law is easiest to check against a directory tree: each top-level folder has one owner, and every arrow between folders is a boundary from [integration boundaries](/patterns/across-teams/integration-boundaries/).

@@ -1,7 +1,15 @@
 ---
-title: "Error Classification: Transient vs Permanent"
+title: "Error classification"
 id: between-services.error-classification
 family: between-services
+description: "Separate transient from permanent failures so use cases retry only what can succeed."
+related: [between-services.webhook-idempotency, across-teams.failure-and-degradation]
+agent:
+  use_when: "a use case calls a gateway and must decide whether a failure should be retried or reported"
+  checklist:
+    - "The gateway classifies; the use case decides on retryable"
+    - "Transient failures retry, permanent ones report immediately"
+    - "Test both classes"
 ---
 
 
