@@ -1,6 +1,6 @@
 ---
 name: All Boundaries
-description: A technical guide library: chalk ground, pine-black ink, signal vermilion for action, four flat survey-colour families carrying fine line art, pine-black code panels.
+description: A technical guide library: chalk ground, pine-black ink, signal vermilion for action, four flat survey-colour families carrying fine line art, One Dark Pro / One Light code panels.
 colors:
   ink-pine: "#12231e"
   chalk: "#f4f6f1"
@@ -18,7 +18,6 @@ colors:
   night-rule: "#26362f"
   night-text: "#e9efe9"
   night-signal: "#ff8a63"
-  code-panel: "#0f1a16"
 typography:
   display:
     fontFamily: "Figtree Variable, Helvetica Neue, Arial, sans-serif"
@@ -71,8 +70,6 @@ components:
     rounded: "{rounded.lg}"
     padding: "1.5rem 1.5rem 0"
   code-block:
-    backgroundColor: "{colors.code-panel}"
-    textColor: "{colors.night-text}"
     rounded: "{rounded.lg}"
 ---
 
@@ -103,7 +100,7 @@ Rejected: navy and indigo, pastel rainbow cards, serif reading text, hard black 
 ### Neutral
 - **Ink Pine** (#12231e) text on **Chalk** (#f4f6f1); **Wash** (#e6ebe4) tints; **Rule** (#d3dbd3) hairlines; **Slate** (#566b62) secondary text.
 - Night: **Night** (#0d1512) ground, **Night Surface** (#15201c), **Night Rule** (#26362f), **Night Text** (#e9efe9).
-- **Code Panel** (#0f1a16) in both themes.
+- Code panels use the One Dark Pro / One Light theme backgrounds, not a site colour.
 
 ### Named Rules
 **The One Action Rule.** Vermilion means link, current location or primary action. Family colours never mark state.
@@ -141,7 +138,7 @@ Radius 12px for panels, 8px for nav pills and controls, 6px for inline code, pil
 Mono uppercase group labels in slate; links 500; the current page is a soft vermilion-tint pill with vermilion text. Header carries four mono section links (Patterns, Journeys, Reference, For AI).
 
 ### Code blocks
-Pine-black panel, 12px radius, github-dark-dimmed syntax, filename tab.
+Syntax themes are Shiki's One Dark Pro (dark) and One Light (light), switching with the site theme; 12px radius, translucent grey border, filename tab. The panel takes the theme's own background rather than a site colour.
 
 ### Tables and diagrams
 Tables: 1px frame, wash header, tabular numerals. Diagrams: always a light panel (#f4f6f1) with pine-black ink and pine edges, in both themes, so authored pale fills stay legible.

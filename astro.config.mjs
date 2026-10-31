@@ -45,11 +45,10 @@ export default defineConfig({
       },
       editLink: { baseUrl: 'https://github.com/all-boundaries/website/edit/main/' },
       expressiveCode: {
-        themes: ['github-dark-dimmed'],
+        themes: ['one-dark-pro', 'one-light'],
         styleOverrides: {
           borderRadius: '12px',
-          borderColor: '#1f322b',
-          codeBackground: '#0f1a16',
+          borderColor: '#8da09666',
           frames: { frameBoxShadowCssValue: 'none' },
         },
       },
