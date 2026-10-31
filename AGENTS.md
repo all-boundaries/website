@@ -12,5 +12,5 @@ Astro + Starlight site. Content is markdown in `src/content/docs/`; Mermaid fenc
 - Layout: `start/`, `patterns/{inside-a-service,between-services,across-teams}/`, `journeys/`, `reference/`. Patterns are the source of truth; journeys only order them.
 - Pattern front matter: `id`, `family`, `description`, `tests`, `related`, `repo`, `agent` (`use_when`, `checklist`). Pages with `agent` get a generated skill at `/skills/<id>/SKILL.md`; every page has a raw twin at `/raw/<path>.md`.
 - Link with absolute slugs (`/patterns/inside-a-service/domain/`), not relative `.md` paths.
-- Drafts live outside this repo in `~/Documents/1-Projects/all-boundaries/material-oct-2026/drafts`; `scripts/migrate-draft.mjs` imports a part (only Part 1 is imported so far).
+- Drafts live outside this repo in `~/Documents/1-Projects/all-boundaries/material-oct-2026/drafts`; `scripts/migrate-draft.mjs` imports parts (Parts 1-4 are imported; REVIEW.md and code-examples are deliberately left out).
 - Design context: `PRODUCT.md` (users, purpose, principles) and `DESIGN.md` (Swiss grid visual system). Read both before changing styles; the surface brief lives in `.impeccable/surfaces/`.

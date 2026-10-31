@@ -171,7 +171,7 @@ A timeout is not covered by a contract mock. Add one test against a plain stub s
 
 The second outbound HTTP gateway asks Payments to charge for a renewal. It follows the same shape, with two differences worth stating.
 
-**The answer is not the outcome.** `POST /charges` answers `201` with `pending`. That means "accepted", not "paid". The gateway returns `accepted` and nothing more; success or failure arrives later on the [webhook](./http#the-payments-webhook). A gateway that returned `paid` would be lying about what it knows.
+**The answer is not the outcome.** `POST /charges` answers `201` with `pending`. That means "accepted", not "paid". The gateway returns `accepted` and nothing more; success or failure arrives later on the [webhook](/patterns/inside-a-service/inbound-http-gateway/#the-payments-webhook). A gateway that returned `paid` would be lying about what it knows.
 
 **Retrying must be safe.** A timeout leaves Subscriptions not knowing whether the charge was created. The request carries an idempotency key derived from the subscription and the billing period, so asking again returns the same charge.
 

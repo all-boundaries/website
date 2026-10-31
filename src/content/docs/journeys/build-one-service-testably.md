@@ -1,9 +1,9 @@
 ---
-title: "Part 1: Inside one service"
+title: "Build one service so it is testable"
 ---
 
 
-> Draft, outside `wiki/`. Page structure follows `website-ab/docs/architecture/`. Code is TypeScript / Bun, as there. **None of the code has been run**; treat it as a sketch to be verified when the example repo exists.
+> The code on these pages has not been run yet. Treat it as a sketch until the companion repository exists.
 
 A product subscription app is split across teams. Each owns one service:
 

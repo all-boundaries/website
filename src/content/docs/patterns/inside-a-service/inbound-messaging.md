@@ -7,7 +7,7 @@ family: inside-a-service
 
 Some work arrives without a request waiting for an answer. Accounts closes a customer's account, and some time later an `AccountClosed` message reaches Subscriptions. Nobody is waiting on a response. The message is delivered at least once, sometimes twice, sometimes out of order, and sometimes malformed.
 
-(Payment outcomes also arrive without anyone waiting, but Payments delivers them by webhook, not through the broker. They have their own section on the [HTTP page](./http#the-payments-webhook). Everything below about duplicates and acknowledgement applies to both.)
+(Payment outcomes also arrive without anyone waiting, but Payments delivers them by webhook, not through the broker. They have their own section on the [HTTP page](/patterns/inside-a-service/inbound-http-gateway/#the-payments-webhook). Everything below about duplicates and acknowledgement applies to both.)
 
 The inbound messaging gateway is the listener. It receives a message, checks it, translates it into a call to the [domain](/patterns/inside-a-service/domain/), and decides whether to acknowledge, retry or set it aside.
 
