@@ -6,14 +6,14 @@ import rehypeMermaid from 'rehype-mermaid';
 const mermaidCss = `
   * { font-family: Arial, Helvetica, sans-serif !important; }
   p { font-size: 16px !important; line-height: 1.5 !important; margin: 0 !important; }
-  .node rect, .node polygon, .node circle, .node path, .actor, .labelBox { fill: var(--sl-color-black) !important; stroke: var(--sl-color-white) !important; stroke-width: 2px !important; }
-  .cluster rect { fill: var(--sl-color-gray-6) !important; stroke: var(--sl-color-gray-4) !important; stroke-width: 1px !important; }
-  .edgePath path, .flowchart-link, .messageLine0, .messageLine1, .relation { stroke: var(--sl-color-white) !important; stroke-width: 2px !important; }
-  marker path, .arrowMarkerPath, .arrowheadPath { fill: var(--sl-color-white) !important; stroke: var(--sl-color-white) !important; }
-  .edgeLabel, .edgeLabel p, .edgeLabel span, .nodeLabel, .nodeLabel p, .cluster-label, .cluster-label span { color: var(--sl-color-white) !important; background: transparent !important;  }
+  .node rect, .node polygon, .node circle, .node path, .actor, .labelBox { fill: var(--sl-color-black) !important; stroke: var(--sl-color-gray-4) !important; stroke-width: 1.5px !important; rx: 8px; ry: 8px; }
+  .cluster rect { fill: var(--sl-color-gray-6) !important; stroke: var(--sl-color-gray-5) !important; stroke-width: 1px !important; rx: 12px; ry: 12px; }
+  .edgePath path, .flowchart-link, .messageLine0, .messageLine1, .relation { stroke: var(--sl-color-accent) !important; stroke-width: 1.75px !important; }
+  marker path, .arrowMarkerPath, .arrowheadPath { fill: var(--sl-color-accent) !important; stroke: var(--sl-color-accent) !important; }
+  .edgeLabel, .edgeLabel p, .edgeLabel span, .nodeLabel, .nodeLabel p, .cluster-label, .cluster-label span { color: var(--sl-color-white) !important; background: transparent !important; }
   .edgeLabel rect, .labelBkg { fill: var(--sl-color-black) !important; background: var(--sl-color-black) !important; }
-  text, .messageText, .actor text, .noteText { fill: var(--sl-color-white) !important; stroke: none !important;  }
-  .note { fill: var(--sl-color-gray-6) !important; stroke: var(--sl-color-gray-4) !important; }
+  text, .messageText, .actor text, .noteText { fill: var(--sl-color-white) !important; stroke: none !important; }
+  .note { fill: var(--sl-color-gray-6) !important; stroke: var(--sl-color-gray-5) !important; }
 `;
 
 export default defineConfig({
@@ -40,16 +40,15 @@ export default defineConfig({
       components: {
         SiteTitle: './src/components/SiteTitle.astro',
         SocialIcons: './src/components/SocialIcons.astro',
-        PageSidebar: './src/components/PageSidebar.astro',
         PageTitle: './src/components/PageTitle.astro',
       },
       editLink: { baseUrl: 'https://github.com/all-boundaries/website/edit/main/' },
       expressiveCode: {
-        themes: ['min-dark'],
+        themes: ['github-dark-dimmed'],
         styleOverrides: {
-          borderRadius: '0',
-          borderColor: '#3a3a39',
-          codeBackground: '#111111',
+          borderRadius: '12px',
+          borderColor: '#1e2f4f',
+          codeBackground: '#0f1b33',
           frames: { frameBoxShadowCssValue: 'none' },
         },
       },

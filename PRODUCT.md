@@ -34,6 +34,7 @@ The pattern catalogue spans the whole boundary stack (domain, gateway, contract,
 ## Brand Commitments
 - Name "All Boundaries" and the domain are fixed.
 - Logo and visual identity are open to improvement; no binding colours or fonts.
+- Visual references the user named (October 2026): Stripe Guides, Stripe Docs and the opencode v2 docs: pale cool ground, deep navy ink, saturated colour fields with fine line art, navy code panels, mono for small labels.
 - Voice direction (recommended, awaiting confirmation): plural, collective "we explore" voice, plain and direct as in the drafts, with a visible invitation to take part (edit on GitHub, propose a pattern, open a discussion) so readers feel like contributors.
 
 ## Evidence on Hand

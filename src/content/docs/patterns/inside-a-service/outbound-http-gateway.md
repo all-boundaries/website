@@ -1,5 +1,5 @@
 ---
-title: "Gateway (outbound HTTP)"
+title: "Outbound HTTP gateway"
 id: inside-a-service.outbound-http-gateway
 family: inside-a-service
 description: Call another team's service and translate its response into the domain's words.

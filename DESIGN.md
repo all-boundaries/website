@@ -1,160 +1,157 @@
 ---
 name: All Boundaries
-description: A Swiss-grid pattern catalogue; one visible module grid, black ink, one signal red marking the current selection.
+description: A technical guide library: cool mist ground, deep navy ink, one indigo for action, four flat family colours carrying fine line art, navy code panels.
 colors:
-  ink: "#111111"
-  poster-white: "#fafaf8"
-  signal-red: "#e10600"
-  red-text-light: "#b00500"
-  graphite: "#55544f"
-  rule-grey: "#cfcdc6"
-  tint-grey: "#ebe9e3"
-  poster-black: "#0f0f0e"
-  bone: "#f4f2ec"
-  ash: "#a3a19b"
-  night-rule: "#3a3a39"
-  code-ground: "#111111"
+  ink-navy: "#0b1f3a"
+  mist: "#f6f9fc"
+  indigo: "#5b4cf0"
+  indigo-deep: "#4636d6"
+  cobalt: "#1f62d6"
+  tangerine: "#ff8a2b"
+  rose: "#ff6fa5"
+  violet: "#6f4be0"
+  rule: "#d5deea"
+  wash: "#e8eef6"
+  slate: "#52678a"
+  night: "#0a1628"
+  night-surface: "#101f36"
+  night-rule: "#243652"
+  night-text: "#eaf1fb"
+  night-indigo: "#8f86ff"
+  code-panel: "#0f1b33"
 typography:
   display:
-    fontFamily: "Hanken Grotesk Variable, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(2.75rem, 5.5vw, 4.75rem)"
-    fontWeight: 800
-    lineHeight: 1.05
-    letterSpacing: "-0.035em"
+    fontFamily: "Figtree Variable, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(2.25rem, 4vw, 3.25rem)"
+    fontWeight: 700
+    lineHeight: 1.12
+    letterSpacing: "-0.03em"
   cover:
-    fontFamily: "Hanken Grotesk Variable, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(2.75rem, 7vw, 6rem)"
-    fontWeight: 800
-    lineHeight: 0.98
-    letterSpacing: "-0.035em"
-  headline:
-    fontFamily: "Hanken Grotesk Variable, Helvetica Neue, Arial, sans-serif"
-    fontSize: "2rem"
-    fontWeight: 800
+    fontFamily: "Figtree Variable, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(2.25rem, 4.6vw, 3.75rem)"
+    fontWeight: 700
     lineHeight: 1.05
+    letterSpacing: "-0.03em"
+  headline:
+    fontFamily: "Figtree Variable, Helvetica Neue, Arial, sans-serif"
+    fontSize: "1.75rem"
+    fontWeight: 700
     letterSpacing: "-0.02em"
   body:
-    fontFamily: "Source Serif 4 Variable, Georgia, serif"
-    fontSize: "1.125rem"
+    fontFamily: "Figtree Variable, Helvetica Neue, Arial, sans-serif"
+    fontSize: "1.0625rem"
     fontWeight: 400
-    lineHeight: 1.65
+    lineHeight: 1.7
   label:
-    fontFamily: "Hanken Grotesk Variable, Helvetica Neue, Arial, sans-serif"
-    fontSize: "0.8125rem"
-    fontWeight: 800
-    letterSpacing: "0.04em"
+    fontFamily: "JetBrains Mono Variable, ui-monospace, Menlo, monospace"
+    fontSize: "0.75rem"
+    fontWeight: 600
+    letterSpacing: "0.08em"
   code:
     fontFamily: "JetBrains Mono Variable, ui-monospace, Menlo, monospace"
     fontSize: "0.875rem"
     lineHeight: 1.6
 rounded:
-  none: "0"
+  sm: "6px"
+  md: "8px"
+  lg: "12px"
+  pill: "999px"
 spacing:
-  module: "6.25rem"
-  sidebar: "18.75rem"
-  column: "43.75rem"
+  sidebar: "17.5rem"
+  column: "46rem"
 components:
-  nav-link-current:
-    textColor: "{colors.ink}"
-    typography: "{typography.label}"
+  button-primary:
+    backgroundColor: "{colors.indigo}"
+    textColor: "#ffffff"
+    rounded: "{rounded.pill}"
+    padding: "0.8rem 1.4rem"
+  button-primary-hover:
+    backgroundColor: "{colors.indigo-deep}"
+  family-card:
+    rounded: "{rounded.lg}"
+    padding: "1.5rem 1.5rem 0"
   code-block:
-    backgroundColor: "{colors.code-ground}"
-    textColor: "{colors.bone}"
-    rounded: "{rounded.none}"
+    backgroundColor: "{colors.code-panel}"
+    textColor: "{colors.night-text}"
+    rounded: "{rounded.lg}"
 ---
 
 # Design System: All Boundaries
 
 ## Overview
 
-**Creative North Star: "The Poster Wall"**
+**Creative North Star: "The Guide Library"**
 
-One module grid disciplines every page, the way one grid disciplines a series of Swiss concert posters. The catalogue spans a function and an organisation, and reads as one calm intelligence because the same ruled, flat, grotesque language holds at every scale. Sections differ by geometric motif, never by layout.
+A shelf of well-made technical guides. Each family of boundaries is a flat colour with its own fine geometric line art, sitting on a cool pale ground under deep navy type. Indigo is the one colour that means "act". Code sits in navy panels, and small labels use mono, in the manner of the Stripe guides and docs and the opencode docs. The reading column is calm: sans text at a 65 to 75 character measure.
 
-The frame is where the world speaks: a heavy top rule, an uppercase wordmark with a red bar, a typographic rail, large flush-left titles, and a toggle that reveals the grid itself. The reading column is calm: a serif at a 60 to 75 character measure on a flat ground.
-
-Rejected: soft cards, rounded corners, shadows, gradients, mascots, decorative illustration, accent colour scattered over the page.
+Rejected: serif reading text, hard black rules, red as a state colour, shadows on anything but cards, gradients, glass, emoji, mascots.
 
 **Key Characteristics:**
-- Visible 6.25rem module grid (header "Grid" toggle); the sidebar is 3 modules, the column 7.
-- Black ink on unprinted white, or bone on poster black; red marks the current selection only.
-- Heavy 3px rules, flat geometry (squares, bars, quarter-circle) as the only imagery.
-- Controls are typographic: state moves a red bar, not a colour wash.
+- Four family colours (cobalt, tangerine, rose, violet) appear only on the landing cards and as fine-line art; page chrome stays navy and indigo.
+- Rounded 12px panels (cards, code, tables, diagrams); pills only for the primary button.
+- Mono for code and small uppercase labels only.
+- Day (mist) and night (deep navy) themes with the same hues.
 
 ## Colors
 
-Restrained: neutrals carry the page, one saturated red carries state.
-
 ### Primary
-- **Signal Red** (#e10600): the current page in the sidebar and contents, link underlines, the wordmark bar, the red element in each geometric motif, selection. Never a surface or large text fill except the hero mark and hover fills.
+- **Indigo** (#5b4cf0, night #8f86ff): links, current page pill, primary button, diagram edges. Contrast on mist 5.9:1.
+
+### Family
+- **Cobalt** (#1f62d6) inside a service; **Tangerine** (#ff8a2b) between services; **Rose** (#ff6fa5) across teams; **Violet** (#6f4be0) journeys. White type on cobalt and violet, navy on tangerine and rose.
 
 ### Neutral
-- **Ink** (#111111) and **Poster White** (#fafaf8): light theme text and ground. Code blocks stay ink.
-- **Bone** (#f4f2ec) and **Poster Black** (#0f0f0e): dark theme text and ground.
-- **Graphite** (#55544f) and **Ash** (#a3a19b): secondary text. **Rule Grey** (#cfcdc6) and **Night Rule** (#3a3a39): hairlines.
+- **Ink Navy** (#0b1f3a) text on **Mist** (#f6f9fc); **Wash** (#e8eef6) tints; **Rule** (#d5deea) hairlines; **Slate** (#52678a) secondary text.
+- Night: **Night** (#0a1628) ground, **Night Surface** (#101f36), **Night Rule** (#243652), **Night Text** (#eaf1fb).
+- **Code Panel** (#0f1b33) in both themes.
 
 ### Named Rules
-**The One Signal Rule.** Red appears only where the reader is, what they can act on, or the single red element of a motif. If red is decorating, remove it.
+**The One Action Rule.** Indigo means link, current location or primary action. Family colours never mark state.
 
 ## Typography
 
-**Display and UI Font:** Hanken Grotesk (variable, self-hosted via Fontsource)
-**Body Font:** Source Serif 4 (variable)
-**Code Font:** JetBrains Mono (variable)
-
-**Character:** a neutral grotesque set heavy and tight for titles and wayfinding, a quiet text serif for sustained reading.
+**Display, UI and Body:** Figtree (variable, self-hosted). **Code and labels:** JetBrains Mono (variable).
 
 ### Hierarchy
-- **Display** (800, clamp 2.75-4.75rem, 1.05, -0.035em): page titles, flush left, balanced.
-- **Cover** (800, clamp 2.75-6rem, 0.98): the landing statement.
-- **Headline** (800, 2rem, -0.02em): h2 under a 3px ink rule.
-- **Body** (400 serif, 1.125rem, 1.65): reading column, about 74 characters at 43.75rem.
-- **Label** (800, 0.8125rem, +0.04em, uppercase): sidebar group titles, wordmark, "On this page".
-- **Code** (JetBrains Mono, 0.875rem): code only.
+- **Display** (700, clamp 2.25-3.25rem, 1.12, -0.03em): page titles.
+- **Cover** (700, clamp 2.25-3.75rem, 1.05): landing statement.
+- **Headline** (700, 1.75rem, -0.02em): h2.
+- **Body** (400, 1.0625rem, 1.7): reading column, 46rem wide.
+- **Label** (mono 600, 0.75rem, +0.08em, uppercase): sidebar groups, "On this page".
+- **Code** (mono, 0.875rem).
 
 ### Named Rules
-**The Grotesque-Heads Rule.** Titles and UI are always the grotesque; prose is always the serif; mono is only code.
+**The Mono Is For Machines Rule.** Mono only for code and tiny labels; never headings or running text.
 
 ## Layout
 
-A 6.25rem module. Sidebar 3 modules, a one-module margin, a 7-module reading column starting on module 4 (400px at 1440), contents rail on the right with the family motif above it. Below 72rem Starlight's single-column layout takes over and the column is fluid. The landing cover is a free grid up to 75rem with a large mark on the right.
+Sidebar 17.5rem, reading column 46rem, contents rail on the right. The landing cover is two columns: statement and actions left, a staggered 2x2 of family cards right (every second card offset 3rem); it stacks on narrow screens. Cards sit on a 1rem gap.
 
 ## Elevation & Depth
 
-Flat. No shadows. Depth is conveyed by 3px ink rules, 1px hairlines, and the black code block.
-
-### Named Rules
-**The Flat Rule.** No shadows, no blur, no rounded corners anywhere.
+Flat pages; only the family cards lift (two-layer navy shadow, deeper on hover with a 4px rise, disabled under reduced motion). Everything else uses 1px rules and tints.
 
 ## Shapes
 
-Right angles only (radius 0). The only forms are squares, bars and one quarter-circle. Each family owns a construction: inside a service = nested squares with a red core; between services = two squares joined by a red bar; across teams = a quarter-circle with a red square. The brand mark is an outlined square crossed by a red square.
+Radius 12px for panels, 8px for nav pills and controls, 6px for inline code, pill for the primary button. Line art is strokes only, 1px, from circles, squares, arcs and stairs.
 
 ## Components
 
 ### Navigation
-Uppercase 800 group labels; links 600; the current page is bold ink with a 4px red bar under the label. Contents rail uses a 3px red bar the same way.
-
-### Links in prose
-Ink with a 3px red underline; on hover the underline fills to a red block with white text.
+Mono uppercase group labels in slate; links 500; the current page is a soft indigo pill with indigo text. Header carries four mono section links (Patterns, Journeys, Reference, For AI).
 
 ### Code blocks
-Ink ground (#111), min-dark syntax theme, 1px night rule border, no radius, filename tab, no shadow.
+Navy panel, 12px radius, github-dark-dimmed syntax, filename tab.
 
-### Tables
-No verticals; a 3px ink rule under the header, 1px hairlines between rows; grotesque, tabular numerals.
-
-### Diagrams
-Mermaid rendered at build time to inline SVG using the page's colour variables: ink strokes 2px, ground fill, no colour; type is Arial/Helvetica so labels fit their measured boxes.
+### Tables and diagrams
+Tables: 1px frame, wash header, tabular numerals. Diagrams: always a light panel (#f6f9fc) with navy ink and indigo edges, in both themes, so authored pale fills stay legible.
 
 ## Do's and Don'ts
 
 ### Do
-- Align new structure to the module; check with the Grid toggle.
-- Mark state with a red bar, not fill or colour.
-- Give each new family or section a single flat geometric motif.
+- Give each new family a colour from the four-colour family set plus its own line art.
+- Use indigo for the one thing the reader can do next.
 
 ### Don't
-- No rounded corners, shadows, gradients, glass, icons-as-decoration, or emoji.
-- No coloured left borders; no eyebrows above headings; no section numbers in headings.
-- Don't put mono or serif in headings or UI.
+- No red, no black rules, no shadows on non-cards, no gradient or glass, no serif body.
+- Don't put white text on tangerine or rose.

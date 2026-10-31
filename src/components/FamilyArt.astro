@@ -1,0 +1,28 @@
+---
+// Fine line art for each family; strokes only, no fills, so the card colour carries the identity.
+const { family } = Astro.props as { family: 'inside' | 'between' | 'across' | 'journeys' };
+---
+<svg class="art" viewBox="0 0 240 150" preserveAspectRatio="xMidYMax slice" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true" focusable="false">
+  {family === 'inside' && (<>
+    <rect x="10" y="30" width="110" height="110" /><rect x="30" y="50" width="70" height="70" /><rect x="50" y="70" width="30" height="30" />
+    <circle cx="170" cy="85" r="52" /><circle cx="170" cy="85" r="34" /><circle cx="170" cy="85" r="16" />
+    <path d="M120 30h110M120 140h110M120 85h-0" />
+  </>)}
+  {family === 'between' && (<>
+    <path d="M0 140 A75 75 0 0 1 150 140" /><path d="M20 140 A55 55 0 0 1 130 140" /><path d="M40 140 A35 35 0 0 1 110 140" />
+    <path d="M90 140 A75 75 0 0 1 240 140" /><path d="M110 140 A55 55 0 0 1 220 140" />
+    <path d="M0 120h240M0 100h240M0 80h240" opacity=".5" />
+  </>)}
+  {family === 'across' && (<>
+    <circle cx="60" cy="110" r="70" /><circle cx="60" cy="110" r="50" /><circle cx="60" cy="110" r="30" />
+    <circle cx="180" cy="95" r="45" /><circle cx="180" cy="95" r="25" />
+    <path d="M0 150L240 10M0 120L200 4M40 150L240 36" opacity=".6" />
+  </>)}
+  {family === 'journeys' && (<>
+    <path d="M0 140h40v-20h40v-20h40v-20h40v-20h40v-20h40" /><path d="M0 128h40v-20h40v-20h40v-20h40v-20h40v-20h40" opacity=".6" /><path d="M0 116h40v-20h40v-20h40v-20h40v-20h40v-20h40" opacity=".35" />
+    <circle cx="200" cy="40" r="20" /><circle cx="200" cy="40" r="8" />
+  </>)}
+</svg>
+<style>
+  .art { display: block; width: 100%; height: auto; }
+</style>
