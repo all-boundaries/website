@@ -1,10 +1,10 @@
 ---
 import FamilyArt from './FamilyArt.astro';
 const cards = [
-  { tone: 'cobalt', art: 'inside', label: 'Inside a service', text: 'Domain, use case, persistence and gateways, each with its test.', href: '/patterns/inside-a-service/domain/' },
-  { tone: 'orange', art: 'between', label: 'Between services', text: 'Contracts, webhooks, idempotency and deploy gates.', href: '/patterns/between-services/' },
-  { tone: 'pink', art: 'across', label: 'Across teams', text: 'Platform, interaction modes and ways of working.', href: '/patterns/across-teams/' },
-  { tone: 'violet', art: 'journeys', label: 'Journeys', text: 'Reading orders from one service to several teams.', href: '/journeys/build-one-service-testably/' },
+  { tone: 'pine', art: 'inside', label: 'Inside a service', text: 'Domain, use case, persistence and gateways, each with its test.', href: '/patterns/inside-a-service/domain/' },
+  { tone: 'yellow', art: 'between', label: 'Between services', text: 'Contracts, webhooks, idempotency and deploy gates.', href: '/patterns/between-services/' },
+  { tone: 'coal', art: 'across', label: 'Across teams', text: 'Platform, interaction modes and ways of working.', href: '/patterns/across-teams/' },
+  { tone: 'sky', art: 'journeys', label: 'Journeys', text: 'Reading orders from one service to several teams.', href: '/journeys/build-one-service-testably/' },
 ];
 ---
 <section class="cover not-content">
@@ -36,10 +36,10 @@ const cards = [
   .lede { font-size: 1.25rem; line-height: 1.55; color: var(--sl-color-gray-2); max-width: 32rem; margin: 1.75rem 0 0; }
   .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; margin: 2rem 0 0; }
   .actions a { text-decoration: none; font-weight: 600; }
-  .primary { background: var(--ab-indigo); color: #fff; padding: 0.8rem 1.4rem; border-radius: 999px; transition: background-color 150ms cubic-bezier(0.2, 0.8, 0.2, 1); }
-  .primary:hover { background: var(--ab-indigo-deep); }
+  .primary { background: var(--ab-signal); color: #fff; padding: 0.8rem 1.4rem; border-radius: 999px; transition: background-color 150ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .primary:hover { background: var(--ab-signal-deep); }
   .plain { color: var(--sl-color-white); border-bottom: 2px solid var(--sl-color-gray-5); padding-bottom: 0.1rem; }
-  .plain:hover { border-color: var(--ab-indigo); }
+  .plain:hover { border-color: var(--ab-signal); }
   .take-part { margin: 3rem 0 0; font-size: var(--sl-text-sm); color: var(--sl-color-gray-3); }
   .take-part a { color: var(--sl-color-white); }
   .cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: start; }
@@ -47,14 +47,14 @@ const cards = [
   .cards li { margin: 0; }
   @media (min-width: 34rem) { .cards li:nth-child(even) { margin-top: 3rem; } }
   .cards a { display: flex; flex-direction: column; justify-content: space-between; min-height: 18.5rem; padding: 1.5rem 1.5rem 0; border-radius: 12px; text-decoration: none; overflow: hidden;
-    color: var(--card-ink); background: var(--card-bg); box-shadow: 0 2px 4px rgb(11 31 58 / 0.08), 0 12px 24px -8px rgb(11 31 58 / 0.18); transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 180ms; }
-  .cards a:hover { transform: translateY(-4px); box-shadow: 0 4px 8px rgb(11 31 58 / 0.1), 0 20px 32px -8px rgb(11 31 58 / 0.24); }
+    color: var(--card-ink); background: var(--card-bg); box-shadow: 0 2px 4px rgb(18 35 30 / 0.08), 0 12px 24px -8px rgb(18 35 30 / 0.18); transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 180ms; }
+  .cards a:hover { transform: translateY(-4px); box-shadow: 0 4px 8px rgb(18 35 30 / 0.1), 0 20px 32px -8px rgb(18 35 30 / 0.24); }
   @media (prefers-reduced-motion: reduce) { .cards a { transition: none; } .cards a:hover { transform: none; } }
   .cards h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin: 0; border: 0; color: inherit; }
   .cards p { margin: 0.6rem 0 1.25rem; font-size: var(--sl-text-sm); line-height: 1.5; color: inherit; opacity: 0.92; }
   .cards :global(.art) { margin-top: auto; opacity: 0.7; }
-  .tone-cobalt { --card-bg: var(--ab-cobalt); --card-ink: #fff; }
-  .tone-orange { --card-bg: var(--ab-orange); --card-ink: #0b1f3a; }
-  .tone-pink { --card-bg: var(--ab-pink); --card-ink: #0b1f3a; }
-  .tone-violet { --card-bg: var(--ab-violet); --card-ink: #fff; }
+  .tone-pine { --card-bg: var(--ab-pine); --card-ink: #fff; }
+  .tone-yellow { --card-bg: var(--ab-yellow); --card-ink: #12231e; }
+  .tone-coal { --card-bg: var(--ab-coal); --card-ink: #fff; }
+  .tone-sky { --card-bg: var(--ab-sky); --card-ink: #12231e; }
 </style>

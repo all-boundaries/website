@@ -2,23 +2,23 @@
 name: All Boundaries
 description: A technical guide library: cool mist ground, deep navy ink, one indigo for action, four flat family colours carrying fine line art, navy code panels.
 colors:
-  ink-navy: "#0b1f3a"
-  mist: "#f6f9fc"
-  indigo: "#5b4cf0"
-  indigo-deep: "#4636d6"
-  cobalt: "#1f62d6"
-  tangerine: "#ff8a2b"
-  rose: "#ff6fa5"
-  violet: "#6f4be0"
-  rule: "#d5deea"
-  wash: "#e8eef6"
-  slate: "#52678a"
-  night: "#0a1628"
-  night-surface: "#101f36"
-  night-rule: "#243652"
-  night-text: "#eaf1fb"
-  night-indigo: "#8f86ff"
-  code-panel: "#0f1b33"
+  ink-pine: "#12231e"
+  chalk: "#f4f6f1"
+  signal: "#c73a12"
+  signal-deep: "#a92e0b"
+  pine: "#0e6b4f"
+  survey-yellow: "#f2c200"
+  coal: "#1b2b26"
+  sky: "#8ccbea"
+  rule: "#d3dbd3"
+  wash: "#e6ebe4"
+  slate: "#566b62"
+  night: "#0d1512"
+  night-surface: "#15201c"
+  night-rule: "#26362f"
+  night-text: "#e9efe9"
+  night-signal: "#ff8a63"
+  code-panel: "#0f1a16"
 typography:
   display:
     fontFamily: "Figtree Variable, Helvetica Neue, Arial, sans-serif"
@@ -61,12 +61,12 @@ spacing:
   column: "46rem"
 components:
   button-primary:
-    backgroundColor: "{colors.indigo}"
+    backgroundColor: "{colors.signal}"
     textColor: "#ffffff"
     rounded: "{rounded.pill}"
     padding: "0.8rem 1.4rem"
   button-primary-hover:
-    backgroundColor: "{colors.indigo-deep}"
+    backgroundColor: "{colors.signal-deep}"
   family-card:
     rounded: "{rounded.lg}"
     padding: "1.5rem 1.5rem 0"
@@ -82,31 +82,31 @@ components:
 
 **Creative North Star: "The Guide Library"**
 
-A shelf of well-made technical guides. Each family of boundaries is a flat colour with its own fine geometric line art, sitting on a cool pale ground under deep navy type. Indigo is the one colour that means "act". Code sits in navy panels, and small labels use mono, in the manner of the Stripe guides and docs and the opencode docs. The reading column is calm: sans text at a 65 to 75 character measure.
+A shelf of well-made technical guides, coloured like survey markings: each family of boundaries is a flat paint colour (pine, survey yellow, coal, sky) with its own fine geometric line art, on a chalk ground under pine-black type. Signal vermilion, the colour of a survey flag, is the one colour that means "act". Code sits in pine-black panels and small labels use mono. Structure follows the Stripe guides and docs and the opencode docs; the palette is deliberately not theirs. The reading column is calm: sans text at a 65 to 75 character measure.
 
-Rejected: serif reading text, hard black rules, red as a state colour, shadows on anything but cards, gradients, glass, emoji, mascots.
+Rejected: navy and indigo, pastel rainbow cards, serif reading text, hard black rules, shadows on anything but cards, gradients, glass, emoji, mascots.
 
 **Key Characteristics:**
-- Four family colours (cobalt, tangerine, rose, violet) appear only on the landing cards and as fine-line art; page chrome stays navy and indigo.
+- Four family colours (pine, survey yellow, coal, sky) appear only on the landing cards and as fine-line art; page chrome stays pine-black and vermilion.
 - Rounded 12px panels (cards, code, tables, diagrams); pills only for the primary button.
 - Mono for code and small uppercase labels only.
-- Day (mist) and night (deep navy) themes with the same hues.
+- Day (chalk) and night (pine-black) themes.
 
 ## Colors
 
 ### Primary
-- **Indigo** (#5b4cf0, night #8f86ff): links, current page pill, primary button, diagram edges. Contrast on mist 5.9:1.
+- **Signal Vermilion** (#c73a12, night #ff8a63): links, current-page pill, primary button, selection. Contrast on chalk 5.0:1.
 
 ### Family
-- **Cobalt** (#1f62d6) inside a service; **Tangerine** (#ff8a2b) between services; **Rose** (#ff6fa5) across teams; **Violet** (#6f4be0) journeys. White type on cobalt and violet, navy on tangerine and rose.
+- **Pine** (#0e6b4f) inside a service; **Survey Yellow** (#f2c200) between services; **Coal** (#1b2b26) across teams; **Sky** (#8ccbea) journeys. White type on pine and coal, ink on yellow and sky. Diagram edges use pine.
 
 ### Neutral
-- **Ink Navy** (#0b1f3a) text on **Mist** (#f6f9fc); **Wash** (#e8eef6) tints; **Rule** (#d5deea) hairlines; **Slate** (#52678a) secondary text.
-- Night: **Night** (#0a1628) ground, **Night Surface** (#101f36), **Night Rule** (#243652), **Night Text** (#eaf1fb).
-- **Code Panel** (#0f1b33) in both themes.
+- **Ink Pine** (#12231e) text on **Chalk** (#f4f6f1); **Wash** (#e6ebe4) tints; **Rule** (#d3dbd3) hairlines; **Slate** (#566b62) secondary text.
+- Night: **Night** (#0d1512) ground, **Night Surface** (#15201c), **Night Rule** (#26362f), **Night Text** (#e9efe9).
+- **Code Panel** (#0f1a16) in both themes.
 
 ### Named Rules
-**The One Action Rule.** Indigo means link, current location or primary action. Family colours never mark state.
+**The One Action Rule.** Vermilion means link, current location or primary action. Family colours never mark state.
 
 ## Typography
 
@@ -129,7 +129,7 @@ Sidebar 17.5rem, reading column 46rem, contents rail on the right. The landing c
 
 ## Elevation & Depth
 
-Flat pages; only the family cards lift (two-layer navy shadow, deeper on hover with a 4px rise, disabled under reduced motion). Everything else uses 1px rules and tints.
+Flat pages; only the family cards lift (two-layer pine-black shadow, deeper on hover with a 4px rise, disabled under reduced motion). Everything else uses 1px rules and tints.
 
 ## Shapes
 
@@ -138,20 +138,20 @@ Radius 12px for panels, 8px for nav pills and controls, 6px for inline code, pil
 ## Components
 
 ### Navigation
-Mono uppercase group labels in slate; links 500; the current page is a soft indigo pill with indigo text. Header carries four mono section links (Patterns, Journeys, Reference, For AI).
+Mono uppercase group labels in slate; links 500; the current page is a soft vermilion-tint pill with vermilion text. Header carries four mono section links (Patterns, Journeys, Reference, For AI).
 
 ### Code blocks
-Navy panel, 12px radius, github-dark-dimmed syntax, filename tab.
+Pine-black panel, 12px radius, github-dark-dimmed syntax, filename tab.
 
 ### Tables and diagrams
-Tables: 1px frame, wash header, tabular numerals. Diagrams: always a light panel (#f6f9fc) with navy ink and indigo edges, in both themes, so authored pale fills stay legible.
+Tables: 1px frame, wash header, tabular numerals. Diagrams: always a light panel (#f4f6f1) with pine-black ink and pine edges, in both themes, so authored pale fills stay legible.
 
 ## Do's and Don'ts
 
 ### Do
-- Give each new family a colour from the four-colour family set plus its own line art.
-- Use indigo for the one thing the reader can do next.
+- Give each new family a survey colour plus its own line art.
+- Use vermilion for the one thing the reader can do next.
 
 ### Don't
-- No red, no black rules, no shadows on non-cards, no gradient or glass, no serif body.
-- Don't put white text on tangerine or rose.
+- No navy or indigo, no black rules, no shadows on non-cards, no gradient or glass, no serif body.
+- Don't put white text on survey yellow or sky.

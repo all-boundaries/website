@@ -3,17 +3,17 @@
 
 /*
   All Boundaries: a technical guide library.
-  Cool mist ground, deep navy ink, one indigo for action, and four flat family colours that carry
-  fine geometric line art. Navy code panels. Mono only for code and small labels.
+  Chalk ground, pine-black ink, one signal vermilion for action, and four flat survey colours (pine, yellow,
+  coal, sky) that carry fine geometric line art. Pine-black code panels. Mono only for code and small labels.
 */
 :root {
-  --ab-indigo: #5b4cf0;
-  --ab-indigo-deep: #4636d6;
-  --ab-cobalt: #1f62d6;
-  --ab-orange: #ff8a2b;
-  --ab-pink: #ff6fa5;
-  --ab-violet: #6f4be0;
-  --ab-navy: #0b1f3a;
+  --ab-signal: #c73a12;
+  --ab-signal-deep: #a92e0b;
+  --ab-pine: #0e6b4f;
+  --ab-yellow: #f2c200;
+  --ab-coal: #1b2b26;
+  --ab-sky: #8ccbea;
+  --ab-ink: #12231e;
 
   --sl-font: 'Figtree Variable', 'Helvetica Neue', Arial, sans-serif;
   --sl-font-mono: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace;
@@ -29,18 +29,18 @@
   --sl-nav-height: 3.75rem;
   color-scheme: dark;
 
-  /* night: deep navy */
-  --sl-color-white: #eaf1fb;
-  --sl-color-gray-1: #dce6f5;
-  --sl-color-gray-2: #c3d0e4;
-  --sl-color-gray-3: #93a5c2;
-  --sl-color-gray-4: #5f7394;
-  --sl-color-gray-5: #243652;
-  --sl-color-gray-6: #101f36;
-  --sl-color-black: #0a1628;
-  --sl-color-accent-low: #26225e;
-  --sl-color-accent: #8f86ff;
-  --sl-color-accent-high: #b9b3ff;
+  /* night: pine-black */
+  --sl-color-white: #e9efe9;
+  --sl-color-gray-1: #dbe4dc;
+  --sl-color-gray-2: #c0cdc3;
+  --sl-color-gray-3: #92a499;
+  --sl-color-gray-4: #5f7268;
+  --sl-color-gray-5: #26362f;
+  --sl-color-gray-6: #15201c;
+  --sl-color-black: #0d1512;
+  --sl-color-accent-low: #3a1a10;
+  --sl-color-accent: #ff8a63;
+  --sl-color-accent-high: #ffb59a;
   --sl-color-bg-nav: var(--sl-color-black);
   --sl-color-bg-sidebar: var(--sl-color-black);
   --sl-color-hairline: var(--sl-color-gray-5);
@@ -50,25 +50,25 @@
   --sl-shadow-sm: none; --sl-shadow-md: none; --sl-shadow-lg: none;
 }
 
-/* day: mist */
+/* day: chalk */
 :root[data-theme='light'] {
   color-scheme: light;
-  --sl-color-white: #0b1f3a;
-  --sl-color-gray-1: #1b3355;
-  --sl-color-gray-2: #33496b;
-  --sl-color-gray-3: #52678a;
-  --sl-color-gray-4: #8a9bb5;
-  --sl-color-gray-5: #d5deea;
-  --sl-color-gray-6: #e8eef6;
-  --sl-color-gray-7: #f0f4fa;
-  --sl-color-black: #f6f9fc;
-  --sl-color-accent-low: #e6e3fd;
-  --sl-color-accent: #5b4cf0;
-  --sl-color-accent-high: #4636d6;
+  --sl-color-white: #12231e;
+  --sl-color-gray-1: #22362f;
+  --sl-color-gray-2: #3a4f47;
+  --sl-color-gray-3: #566b62;
+  --sl-color-gray-4: #8da096;
+  --sl-color-gray-5: #d3dbd3;
+  --sl-color-gray-6: #e6ebe4;
+  --sl-color-gray-7: #edf1eb;
+  --sl-color-black: #f4f6f1;
+  --sl-color-accent-low: #fbe3db;
+  --sl-color-accent: #c73a12;
+  --sl-color-accent-high: #a92e0b;
   --sl-color-text-accent: var(--sl-color-accent-high);
 }
 
-::selection { background: var(--ab-indigo); color: #fff; }
+::selection { background: var(--ab-signal); color: #fff; }
 :focus-visible { outline: 3px solid var(--sl-color-accent); outline-offset: 2px; }
 html { scrollbar-color: var(--sl-color-gray-4) var(--sl-color-black); }
 body { font-feature-settings: 'kern' 1; }
@@ -115,8 +115,8 @@ header.header { border-bottom: 1px solid var(--sl-color-gray-5); }
 
 /* Diagrams: always a light panel with navy ink, so authored pale fills stay legible in both themes */
 .sl-markdown-content svg[id^='mermaid'] {
-  --sl-color-white: #0b1f3a; --sl-color-black: #ffffff; --sl-color-gray-4: #8a9bb5; --sl-color-gray-5: #d5deea; --sl-color-gray-6: #e8eef6; --sl-color-accent: #5b4cf0;
-  display: block; width: 100%; height: auto; margin-block: 0; padding: 1.5rem; background: #f6f9fc; border: 1px solid #d5deea; border-radius: 12px;
+  --sl-color-white: #12231e; --sl-color-black: #ffffff; --sl-color-gray-4: #8da096; --sl-color-gray-5: #d3dbd3; --sl-color-gray-6: #e6ebe4; --sl-color-accent: #0e6b4f;
+  display: block; width: 100%; height: auto; margin-block: 0; padding: 1.5rem; background: #f4f6f1; border: 1px solid #d3dbd3; border-radius: 12px;
 }
 
 /* Right rail */

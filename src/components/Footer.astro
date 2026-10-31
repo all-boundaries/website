@@ -42,14 +42,14 @@ import Default from '@astrojs/starlight/components/Footer.astro';
   .diagram-home { position: relative; }
   .diagram-home svg { cursor: zoom-in; }
   .diagram-zoom { position: absolute; top: 1rem; right: 1rem; font: 600 var(--sl-text-2xs)/1 var(--sl-font-mono); letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--ab-navy); background: #fff; border: 1px solid #d5deea; border-radius: 8px; padding: 0.45rem 0.7rem; cursor: pointer; opacity: 0; transition: opacity 150ms; }
+    color: var(--ab-ink); background: #fff; border: 1px solid #d3dbd3; border-radius: 8px; padding: 0.45rem 0.7rem; cursor: pointer; opacity: 0; transition: opacity 150ms; }
   .diagram-home:hover .diagram-zoom, .diagram-zoom:focus-visible { opacity: 1; }
   @media (hover: none) { .diagram-zoom { opacity: 1; } }
-  .diagram-dialog { inset: 0; margin: auto; width: min(96vw, 110rem); height: min(92vh, 60rem); max-width: none; max-height: none; padding: 0; border: 0; border-radius: 16px; background: #f6f9fc; box-shadow: 0 24px 64px rgb(11 31 58 / 0.4); }
-  .diagram-dialog::backdrop { background: rgb(5 12 24 / 0.7); }
+  .diagram-dialog { inset: 0; margin: auto; width: min(96vw, 110rem); height: min(92vh, 60rem); max-width: none; max-height: none; padding: 0; border: 0; border-radius: 16px; background: #f4f6f1; box-shadow: 0 24px 64px rgb(18 35 30 / 0.4); }
+  .diagram-dialog::backdrop { background: rgb(6 14 11 / 0.7); }
   .diagram-stage { height: 100%; overflow: auto; display: grid; place-items: center; padding: 3.5rem 2rem 2rem; }
   .diagram-stage svg { width: 100%; max-width: none; height: auto; max-height: 100%; margin: 0; padding: 0; border: 0; background: none; cursor: default; }
-  .diagram-close { position: absolute; top: 1rem; right: 1rem; z-index: 1; font: 600 var(--sl-text-2xs)/1 var(--sl-font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: var(--ab-indigo); border: 0; border-radius: 999px; padding: 0.6rem 1rem; cursor: pointer; }
-  .diagram-close:hover { background: var(--ab-indigo-deep); }
+  .diagram-close { position: absolute; top: 1rem; right: 1rem; z-index: 1; font: 600 var(--sl-text-2xs)/1 var(--sl-font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: var(--ab-signal); border: 0; border-radius: 999px; padding: 0.6rem 1rem; cursor: pointer; }
+  .diagram-close:hover { background: var(--ab-signal-deep); }
   @media (prefers-reduced-motion: reduce) { .diagram-zoom { transition: none; } }
 </style>

@@ -48,8 +48,8 @@ export default defineConfig({
         themes: ['github-dark-dimmed'],
         styleOverrides: {
           borderRadius: '12px',
-          borderColor: '#1e2f4f',
-          codeBackground: '#0f1b33',
+          borderColor: '#1f322b',
+          codeBackground: '#0f1a16',
           frames: { frameBoxShadowCssValue: 'none' },
         },
       },
