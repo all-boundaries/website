@@ -1,6 +1,6 @@
 ---
 name: All Boundaries
-description: A technical guide library: cool mist ground, deep navy ink, one indigo for action, four flat family colours carrying fine line art, navy code panels.
+description: A technical guide library: chalk ground, pine-black ink, signal vermilion for action, four flat survey-colour families carrying fine line art, pine-black code panels.
 colors:
   ink-pine: "#12231e"
   chalk: "#f4f6f1"
