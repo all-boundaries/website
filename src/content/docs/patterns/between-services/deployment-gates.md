@@ -57,7 +57,7 @@ The same check is asked in both directions. Subscriptions asks it before deployi
 
 The shape is identical for any service on the broker:
 
-1. **Test.** The usual suite (Parts 1 and 2).
+1. **Test.** The usual suite (see [building one service](/journeys/build-one-service-testably/) and [adding a second service](/journeys/add-a-second-service/)).
 2. **Consumer: publish pacts.** Tagged with the commit and branch.
 3. **Provider: verify pacts and publish the result.** Selectors: main branch, matching branch, and everything deployed or released.
 4. **`can-i-deploy` to the target environment.** A failure stops the pipeline.
@@ -67,7 +67,7 @@ The shape is identical for any service on the broker:
 Step 6 matters more than it looks. If it is skipped, the broker believes the old version is still live, and every later check compares against the wrong thing. Make it a step of the deploy job, not a separate job that can be forgotten.
 
 ```yaml
-# Subscriptions (consumer): excerpt, see code-examples/ci-examples/subscriptions-ci.yml
+# Subscriptions (consumer): excerpt
 - run: npm run test:contracts:consumer
 - run: >
     pact-broker publish pacts
@@ -82,7 +82,7 @@ Step 6 matters more than it looks. If it is skipped, the broker believes the old
 ```
 
 ```yaml
-# Payments (provider): excerpt, see code-examples/ci-examples/payments-ci.yml
+# Payments (provider): excerpt
 - run: npm run test:contracts:verify    # replays Subscriptions' pacts, publishes the result
 - run: >
     pact-broker can-i-deploy --pacticipant Payments
@@ -143,16 +143,16 @@ The working agreement is that both teams treat the pact file as the thing under 
 
 ## Setup
 
-The broker runs in a container with a database, and each environment has to be created once (`pact-broker create-environment --name production --production`). `code-examples/pact-broker/docker-compose.yml` is a local setup; a team that uses this seriously will want a hosted broker. See code-examples/README.md.
+The broker runs in a container with a database, and each environment has to be created once (`pact-broker create-environment --name production --production`). A local setup can run it in containers; a team that uses this seriously will want a hosted broker.
 
 ## What the gate does not do
 
 - It does not run the services together. Nothing here starts both and sends a request.
 - It does not cover services outside the broker: the third-party processor, or a consumer that never joined.
-- It does not know about behaviour that a pact does not describe (see [contract-drift.md](/patterns/between-services/contract-drift/#drift-that-remains)).
+- It does not know about behaviour that a pact does not describe (see [contract drift](/patterns/between-services/contract-drift/#drift-that-remains)).
 
-Those gaps are the reason for the few end-to-end journeys in Part 5.
+Those gaps are the reason for keeping a few end-to-end journeys.
 
-## Next: Part 4
+## Next
 
-[Part 4](/journeys/one-product-several-teams/) looks at the teams around these gates.
+[One product, several teams](/journeys/one-product-several-teams/) looks at the teams around these gates.

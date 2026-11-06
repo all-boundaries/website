@@ -102,7 +102,7 @@ The pact catches drift in shape. It does not catch drift in behaviour, and sever
 
 | Drift | Why a pact does not see it | Where it is caught |
 |---|---|---|
-| Payments sends the webhook before the charge is committed | Same body either way | Payments' use-case and idempotency tests; Part 5 for the cross-service ordering |
+| Payments sends the webhook before the charge is committed | Same body either way | Payments' use-case and idempotency tests; a few end-to-end journeys for the cross-service ordering |
 | Payments changes its retry schedule | Not part of any message | Payments' gateway tests; the Subscriptions handler's idempotency tests |
 | A new enum value for `outcome` | The pact lists the values it knows | The reader's handler tests: unknown value goes to dead-letter or an alert |
 | Subscriptions treats `amount: 0` as success | Both sides agree about shape | The Subscriptions domain tests |
@@ -116,4 +116,4 @@ Some of this is the reader's job. A reader that ignores fields it does not use, 
 
 ## Next: environments and the gate
 
-Read [deployment-gates.md](/patterns/between-services/deployment-gates/).
+Read [deployment gates](/patterns/between-services/deployment-gates/).

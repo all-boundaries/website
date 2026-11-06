@@ -105,7 +105,7 @@ The test proves:
 
 ## Storage
 
-The `deliveryId` must be persisted in the database, in a table the handler owns (the same pattern as Part 1's `processed_message`):
+The `deliveryId` must be persisted in the database, in a table the handler owns (the same pattern as the `processed_message` table in the [inbound messaging](/patterns/inside-a-service/inbound-messaging/) pattern):
 
 ```sql
 create table processed_webhook_delivery (
@@ -119,15 +119,15 @@ The primary key also protects against two deliveries racing each other: the seco
 
 The handler checks this table before processing, inside the same transaction that settles the charge.
 
-## Difference from Part 1
+## Difference from the Subscriptions service
 
-Part 1 already has the same problem twice. The `AccountClosed` listener and the Payments webhook handler each deduplicate with the `processed_message` table, because the broker (or Payments) delivers at least once.
+The Subscriptions service already has the same problem twice. The `AccountClosed` listener and the Payments webhook handler each deduplicate with the `processed_message` table, because the broker (or Payments) delivers at least once.
 
 What differs here is who retries and how:
 - Broker: retries on a negative acknowledgement, and the consumer controls the outcome (`ack`, `retry`, `dead-letter`)
 - Webhook: the *caller* retries, on its own schedule, driven only by the HTTP status code we return
 
-In both cases the service owns deduplication. For the webhook the status code is also the retry instruction, so the mapping of results to codes is part of the contract (see Part 1's [webhook table](/patterns/inside-a-service/inbound-http-gateway/#the-payments-webhook)).
+In both cases the service owns deduplication. For the webhook the status code is also the retry instruction, so the mapping of results to codes is part of the contract (see the [webhook table](/patterns/inside-a-service/inbound-http-gateway/#the-payments-webhook)).
 
 ## In code
 

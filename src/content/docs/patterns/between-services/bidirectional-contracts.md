@@ -20,11 +20,11 @@ Payments stands between two different kinds of neighbour, and the contract tooli
 | Subscriptions | A team in the same company, with its own pipeline | Subscriptions calls `POST /charges`; Payments calls the webhook | Consumer-written contracts that Payments verifies |
 | The card processor | A third party | Payments calls the processor; the processor calls Payments | A recorded understanding of the API, checked against the processor's sandbox |
 
-Part 3 explains how the first kind moves between teams. This page covers what Payments writes and verifies.
+The page on [stopping contract drift](/journeys/stop-contract-drift/) explains how the first kind moves between teams. This page covers what Payments writes and verifies.
 
 ## Subscriptions' contracts: Payments verifies them
 
-Subscriptions writes down what it needs, in its own tests (Part 1: the [outbound gateway](/patterns/inside-a-service/outbound-http-gateway/) for `POST /charges` and the [webhook handler](/patterns/inside-a-service/inbound-http-gateway/) for the outcome payload). Each writes a pact. Payments replays both against its own code.
+Subscriptions writes down what it needs, in its own tests (the [outbound gateway](/patterns/inside-a-service/outbound-http-gateway/) for `POST /charges` and the [webhook handler](/patterns/inside-a-service/inbound-http-gateway/) for the outcome payload). Each writes a pact. Payments replays both against its own code.
 
 ```
 POST /charges   { subscriptionId, idempotencyKey, amount, currency }
@@ -78,7 +78,7 @@ When I POST /charges with { amount, currency, metadata },
 I expect back { id, status, failureCode? } with status in [succeeded, requires_action, failed]
 ```
 
-The gateway test is written the same way as Part 1's Inventory test, against a contract mock server:
+The gateway test is written the same way as the Inventory test, against a contract mock server:
 
 ```typescript
 // test/non-dom/processor.consumer.test.ts
@@ -126,4 +126,4 @@ See `payments/test/non-dom/` for the tests:
 - `processor.consumer.test.ts` — the processor mock
 - `processor.sandbox.test.ts` — learning tests against the sandbox (scheduled)
 
-Part 3 explains how the pact files flow between teams.
+The page on [stopping contract drift](/journeys/stop-contract-drift/) explains how the pact files flow between teams.

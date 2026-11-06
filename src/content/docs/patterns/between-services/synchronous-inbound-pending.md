@@ -17,7 +17,7 @@ Subscriptions calls `POST /charges` and expects a response immediately. Payments
 
 ## Why not fully async?
 
-Subscriptions could publish a `ChargeRequested` message and forget about it. It asks synchronously instead (see Part 1's [outbound gateway](/patterns/inside-a-service/outbound-http-gateway/)).
+Subscriptions could publish a `ChargeRequested` message and forget about it. It asks synchronously instead (see the [outbound gateway](/patterns/inside-a-service/outbound-http-gateway/)).
 
 **Sync request makes sense here:**
 - Subscriptions needs to know right now if the charge request was accepted or malformed, and gets a charge id it can quote in support and logs

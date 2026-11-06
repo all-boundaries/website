@@ -31,10 +31,10 @@ Two things follow from this. The consumer's mock cannot drift from the provider'
 
 ## Subscriptions: calling Payments
 
-The consumer test is the same one shown in Part 1's [gateway page](/patterns/inside-a-service/outbound-http-gateway/#the-payments-gateway). It lists only what the gateway sends and reads:
+The consumer test is the same one shown on the [gateway page](/patterns/inside-a-service/outbound-http-gateway/#the-payments-gateway). It lists only what the gateway sends and reads:
 
 ```javascript
-// code-examples/pact-tests/subscriptions-consumer.spec.js (excerpt)
+// subscriptions-consumer.spec.js (excerpt)
 
 await provider
   .addInteraction()
@@ -68,7 +68,7 @@ The response lists `chargeId` and `status` because the gateway reads them. If Pa
 The webhook is Payments calling Subscriptions, but Subscriptions is the one that *reads* the body, so Subscriptions writes the pact. It is a message contract, so the pact describes the body, not the HTTP call.
 
 ```javascript
-// code-examples/pact-tests/subscriptions-consumer.spec.js (excerpt)
+// subscriptions-consumer.spec.js (excerpt)
 
 await messagePact
   .expectsToReceive('a PaymentOutcome webhook')
@@ -96,7 +96,7 @@ Do not pin more than the code depends on. A pact that asserts the exact wording 
 Payments does not write pacts for Subscriptions. It replays them.
 
 ```javascript
-// code-examples/provider-verification/payments-verify.spec.js (excerpt)
+// payments-verify.spec.js (excerpt)
 
 // HTTP: replay Subscriptions' request against the real route
 await new Verifier({
@@ -184,4 +184,4 @@ The model needs both sides inside the same group of teams, a small number of con
 
 ## Next: contract drift
 
-Read [contract-drift.md](/patterns/between-services/contract-drift/) to see what happens when a pact changes.
+Read [contract drift](/patterns/between-services/contract-drift/) to see what happens when a pact changes.
