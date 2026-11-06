@@ -86,7 +86,11 @@ header.header { border-bottom: 1px solid var(--sl-color-gray-5); }
   background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); font-weight: 650;
 }
 .sidebar-content summary, .sidebar-content .large { font: 600 var(--sl-text-2xs)/1.4 var(--sl-font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--sl-color-gray-3); }
-.sidebar-content ul ul { border-inline-start: 1px solid var(--sl-color-gray-5); }
+.sidebar-content summary:hover { color: var(--sl-color-white); }
+/* Hierarchy without rules: nested lists step in by margin, and sub-group labels drop the mono caps for sans 600 */
+.sidebar-content ul ul li { border-inline-start: 0; padding-inline-start: 0; margin-inline-start: 0.75rem; }
+.sidebar-content ul ul :is(summary, .large) { font: 600 var(--sl-text-sm)/1.4 var(--sl-font); letter-spacing: 0; text-transform: none; color: var(--sl-color-white); }
+.sidebar-content ul ul ul { margin-top: 0.1rem; }
 
 /* Titles */
 .sl-markdown-content h1, h1#_top, .content-panel h1 { font-weight: 700; letter-spacing: -0.03em; text-wrap: balance; }
