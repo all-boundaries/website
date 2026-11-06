@@ -291,7 +291,7 @@ describe("webhook: payment outcome handler", () => {
 
 ### What the webhook tests cannot catch
 
-Whether Payments really sends this body and signs it the way we verify it. The pact is the evidence, and Payments verifies it (Part 3). Nor can they show that Payments retries as the table above assumes; that is Payments' own gateway behaviour (Part 2).
+Whether Payments really sends this body and signs it the way we verify it. The pact is the evidence, and Payments verifies it (see [stopping contract drift](/journeys/stop-contract-drift/)). Nor can they show that Payments retries as the table above assumes; that is Payments' own gateway behaviour (see [adding a second service](/journeys/add-a-second-service/)).
 
 ### When these tests become necessary
 

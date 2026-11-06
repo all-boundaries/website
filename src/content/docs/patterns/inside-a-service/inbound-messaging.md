@@ -209,7 +209,7 @@ The broker container is started once for the run, like the database. Topics are 
 
 ### What this test cannot catch
 
-**Whether Accounts really sends this payload:** The contract file is the evidence, and Accounts verifies it in their own tests (Part 3). The contract test here only proves Subscriptions can read what it promises to expect.
+**Whether Accounts really sends this payload:** The contract file is the evidence, and Accounts verifies it in their own tests (see [stopping contract drift](/journeys/stop-contract-drift/)). The contract test here only proves Subscriptions can read what it promises to expect.
 
 **Which subscriptions a closed account affects:** that a past-due subscription is cancelled too, or that an already cancelled one is left alone, are domain rules and belong in the [domain tests](/patterns/inside-a-service/domain/). Broker delivery order is a Redpanda concern, not a handler concern.
 

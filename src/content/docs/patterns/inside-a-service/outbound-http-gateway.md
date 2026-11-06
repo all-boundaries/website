@@ -30,7 +30,7 @@ The gateway also decides what a failure means to the caller. A `409 out of stock
 
 When Inventory changes its API, update the gateway. The domain does not change. When the domain remodels a concept, update the mapping in the gateway. Inventory does not change.
 
-This also lets the two teams work independently. Subscriptions defines what it needs. Inventory defines what it provides. The gateway test records that need as a file Inventory can check (see Part 3).
+This also lets the two teams work independently. Subscriptions defines what it needs. Inventory defines what it provides. The gateway test records that need as a file Inventory can check (see [stopping contract drift](/journeys/stop-contract-drift/)).
 
 ```mermaid
 flowchart LR
@@ -233,7 +233,7 @@ The static version used by the closed-box test records the requests it receives,
 
 ### What this test cannot catch
 
-**Whether Inventory or Payments really reply this way.** The contract test proves we *can read* what we promised; the pact file is the evidence. When Inventory replays the contract against their service (Part 3), they verify they *do send* it. This is the consumer-producer handoff: the consumer (Subscriptions) proves they understand the contract, and the provider (Inventory) proves they uphold it. Together, they prove the integration works.
+**Whether Inventory or Payments really reply this way.** The contract test proves we *can read* what we promised; the pact file is the evidence. When Inventory replays the contract against their service (see [stopping contract drift](/journeys/stop-contract-drift/)), they verify they *do send* it. This is the consumer-producer handoff: the consumer (Subscriptions) proves they understand the contract, and the provider (Inventory) proves they uphold it. Together, they prove the integration works.
 
 **Timeouts.** A contract mock cannot delay its response. A separate test with a plain stub server covers timeout handling.
 

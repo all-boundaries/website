@@ -142,11 +142,11 @@ it("meets the expectations of consumers", async () => {
 });
 ```
 
-Before any consumer writes a contract, the team can pin the shape itself with a JSON schema check against `toMessage`, committed to the repository. It catches accidental changes to the message shape until Part 3 sets up the exchange of contracts with real consumers. This buys time early and prevents silent shape regressions.
+Before any consumer writes a contract, the team can pin the shape itself with a JSON schema check against `toMessage`, committed to the repository. It catches accidental changes to the message shape until contracts are exchanged with real consumers ([consumer-driven contracts](/patterns/between-services/consumer-driven-contracts/)). This buys time early and prevents silent shape regressions.
 
 ### What this test cannot catch
 
-**Whether any consumer can actually read what the broker holds:** A real broker proves our side publishes correctly. The contract proves the shape we promise. Only the consumer's own tests and the contract verification on their side prove they read it correctly and handle our message format. This is Part 3's handoff: the provider test here and the consumer test on the reader's side (for example Accounts) together verify the message contract.
+**Whether any consumer can actually read what the broker holds:** A real broker proves our side publishes correctly. The contract proves the shape we promise. Only the consumer's own tests and the contract verification on their side prove they read it correctly and handle our message format. This is the handoff described in [stopping contract drift](/journeys/stop-contract-drift/): the provider test here and the consumer test on the reader's side (for example Accounts) together verify the message contract.
 
 ### Tools used
 

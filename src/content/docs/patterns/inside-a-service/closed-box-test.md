@@ -41,7 +41,7 @@ Closed-box tests are slower than the rest and cover many layers at once. When on
 
 - **One behaviour per test**, named in the product's words: "failed renewal puts the subscription in grace".
 - **No combinations.** Variations of a rule (leap days, plan changes) belong in the domain tests.
-- **One service.** Neighbours are always stubbed. Testing across services is Part 3's contracts and Part 5's few end-to-end journeys.
+- **One service.** Neighbours are always stubbed. Testing across services is the job of contract tests ([stopping contract drift](/journeys/stop-contract-drift/)) and a few end-to-end journeys.
 - **Far fewer than domain tests.** As a rule of thumb: one closed-box test per happy-path user journey, plus one per major error scenario involving multiple components (e.g., a remote service is unavailable). A ratio of 1:3 or 1:4 (closed-box to domain tests) is typical. If the suite grows toward the size of the domain suite, move cases down: most of what is being tested belongs in the layers below.
 
 ```mermaid
@@ -187,7 +187,7 @@ Add a few **out-of-process** tests of the same shape that start the built servic
 
 ## What this test cannot catch
 
-Anything about the real Inventory, Payments or Accounts. The static gateways return what the test author expects, and the test posts the webhook body the author believes Payments sends. If Payments changes its webhook or its `/charges` answer, these tests keep passing. The contract tests in Part 3 are what notice.
+Anything about the real Inventory, Payments or Accounts. The static gateways return what the test author expects, and the test posts the webhook body the author believes Payments sends. If Payments changes its webhook or its `/charges` answer, these tests keep passing. The contract tests ([stopping contract drift](/journeys/stop-contract-drift/)) are what notice.
 
 ### Tools used
 
