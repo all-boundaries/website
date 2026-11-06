@@ -120,7 +120,7 @@ header.header { border-bottom: 1px solid var(--sl-color-gray-5); }
 /* Diagrams: always a light panel with navy ink, so authored pale fills stay legible in both themes */
 .sl-markdown-content svg[id^='mermaid'] {
   --sl-color-white: #12231e; --sl-color-black: #ffffff; --sl-color-gray-4: #8da096; --sl-color-gray-5: #d3dbd3; --sl-color-gray-6: #e6ebe4; --sl-color-accent: #0e6b4f;
-  display: block; width: 100%; height: auto; margin-block: 0; padding: 1.5rem; background: #f4f6f1; border: 1px solid #d3dbd3; border-radius: 12px;
+  display: block; width: 100%; max-width: none !important; height: auto; margin-block: 0; padding: 1.5rem; background: #f4f6f1; border: 1px solid #d3dbd3; border-radius: 12px;
 }
 
 /* Right rail */
