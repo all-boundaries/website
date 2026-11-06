@@ -14,7 +14,7 @@ agent:
 
 ## A Boundary Is a Decision About Ownership
 
-A boundary says: this side is yours, that side is theirs, and here is what we agree to share. Rainsberger puts it well: a contract is a record of a decision about where to put the boundaries between components, and it can be renegotiated (contract-testing). Inside the channel monorepo there are no network walls enforcing this, so the boundaries must be made explicit and checked, or they erode.
+A boundary says: this side is yours, that side is theirs, and here is what we agree to share. Rainsberger puts it well: a contract is a record of a decision about where to put the boundaries between components, and it can be renegotiated. Inside the channel monorepo there are no network walls enforcing this, so the boundaries must be made explicit and checked, or they erode.
 
 ## The Boundaries in the Coffee Product
 
@@ -30,8 +30,8 @@ flowchart TB
         PS["server/"]
     end
     SC -- "1 package exports<br/>(payment-method component)" --> PC
-    SS -- "2 core service APIs (Part 3 Pact)" --> Core["Core services<br/>(own repos, own deploys)"]
-    PS -- "2 core service APIs (Part 3 Pact)" --> Core
+    SS -- "2 core service APIs (Pact)" --> Core["Core services<br/>(own repos, own deploys)"]
+    PS -- "2 core service APIs (Pact)" --> Core
     Shared["4 shared types<br/>(ids, error codes only)"] -.-> SC & SS & PC & PS
 ```
 
@@ -50,7 +50,7 @@ Each feature package exposes a small public surface (its pages, the components i
 Each feature's `server/` calls its own core service, and Subscriptions' checkout calls the Payments API. These are real network calls to separately deployed services, owned by the same teams that own the feature. The adapter in the channel is the consumer side of the contract.
 
 - **Owner**: Payments owns the provider side; Subscriptions states what it needs as the consumer.
-- **Check**: the Part 3 contracts and Pact verification continue to apply. Co-owning a feature and its service is not a reason to drop them: the two release on different cadences, and a feature in the channel may be calling a service version older than the one in the next release.
+- **Check**: the service contracts and Pact verification continue to apply. Co-owning a feature and its service is not a reason to drop them: the two release on different cadences, and a feature in the channel may be calling a service version older than the one in the next release.
 
 ### 3. UI extension points
 
@@ -110,15 +110,15 @@ The boundary must define what each side does when the other fails, otherwise the
 | Situation | Who decides the behaviour |
 |---|---|
 | Payments server is slow or down during checkout | Subscriptions decides what the customer sees; Payments defines the failure modes it can return |
-| Charge fails after enrolment started | The journey owner (Subscriptions) defines recovery; Payments guarantees the charge outcome is reliable and idempotent (Part 2) |
+| Charge fails after enrolment started | The journey owner (Subscriptions) defines recovery; Payments guarantees the charge outcome is reliable and idempotent (see [error classification](/patterns/between-services/error-classification/)) |
 | A feature page throws | The platform error boundary contains it; the owning team fixes it |
 | The Payments component is unavailable | Subscriptions decides whether to degrade or block |
 
-Writing these down is part of the contract. The Part 2 work on error classification (transient versus permanent) is what lets the consumer make these decisions sensibly.
+Writing these down is part of the contract. The work on error classification (transient versus permanent) is what lets the consumer make these decisions sensibly.
 
 ## Keeping Contracts Small
 
-Boundaries stay healthy when agreements are minimal (minimal critical specification). A consumer should assert only what it actually uses. A contract that pins every field and every validation rule blocks harmless changes by the other team and pushes teams back into constant coordination. A contract that is too loose gives false confidence. The right size is: everything the consumer relies on, nothing more.
+Boundaries stay healthy when agreements are minimal. A consumer should assert only what it actually uses. A contract that pins every field and every validation rule blocks harmless changes by the other team and pushes teams back into constant coordination. A contract that is too loose gives false confidence. The right size is: everything the consumer relies on, nothing more.
 
 ## What Success Looks Like
 

@@ -16,7 +16,7 @@ agent:
 
 Core services fail independently: Subscriptions can be up while Payments is down. The customer does not see services, only one page that either works or does not. Someone has to decide, per page and per step, what "partly working" looks like. That decision is about the customer experience, so it belongs to the feature team, not to the platform and not to the core service.
 
-Part 2's [error classification](/patterns/between-services/error-classification/) is what makes this tractable. The core service says *what kind* of failure it was (transient or permanent, retryable or not). The channel decides *what the customer sees*.
+The [error classification](/patterns/between-services/error-classification/) is what makes this tractable. The core service says *what kind* of failure it was (transient or permanent, retryable or not). The channel decides *what the customer sees*.
 
 ## Who Decides What
 
@@ -58,7 +58,7 @@ Rule: a widget that depends on a non-essential service must fail on its own, not
 
 ## The Pending Charge
 
-Part 2: `POST /charges` returns `pending`, and the outcome arrives later by webhook. The customer's "confirm" click therefore usually ends in an *in-between* state, not success or failure.
+`POST /charges` returns `pending`, and the outcome arrives later by webhook. The customer's "confirm" click therefore usually ends in an *in-between* state, not success or failure.
 
 ```mermaid
 stateDiagram-v2
@@ -94,8 +94,8 @@ Keep these in the adapter, where the knowledge of the neighbour lives:
 
 | What | Level | Replaced |
 |---|---|---|
-| Adapter maps each core-service failure to a typed outcome | Adapter test (outbound gateway, Part 1 style) | Core service, by contract mock |
-| Timeouts and slow responses | Adapter test | Plain stub server (a contract mock cannot delay, Part 1) |
+| Adapter maps each core-service failure to a typed outcome | Adapter test (as for an outbound gateway) | Core service, by contract mock |
+| Timeouts and slow responses | Adapter test | Plain stub server (a contract mock cannot delay) |
 | Page renders each degraded state | Component test | Adapters, by fakes returning typed outcomes |
 | Breaker opens and closes | Adapter test | Stub failing then recovering |
 | Pending to Active and Declined paths | The one journey check | Core services, by static stubs; webhook simulated |
@@ -104,7 +104,7 @@ Failure scenarios are one of the few good reasons for extra journey-level checks
 
 ## Contracts for Failure
 
-Failure shapes are part of the contract. The core service's Pact should include its error responses (transient `503`, permanent `402`/`4xx`, with a stable error code), and the adapter's consumer Pact should assert only the codes it branches on (minimal critical specification). If the channel starts relying on an unstated error behaviour, an incident will find it; add it to the contract afterwards (see [ways of working](/patterns/across-teams/ways-of-working/)).
+Failure shapes are part of the contract. The core service's Pact should include its error responses (transient `503`, permanent `402`/`4xx`, with a stable error code), and the adapter's consumer Pact should assert only the codes it branches on. If the channel starts relying on an unstated error behaviour, an incident will find it; add it to the contract afterwards (see [ways of working](/patterns/across-teams/ways-of-working/)).
 
 ## Warning Signs
 

@@ -14,7 +14,7 @@ agent:
 
 ## Shared Deployment Is Not Shared Decision-Making
 
-The channel is one repository and one deploy, so every team's feature ships together. The core services do not: Subscriptions and Payments release those on their own, through the Part 3 gate. This page is about the channel. The shared deploy is a fact about release mechanics. It must not become a fact about how decisions are made. The ways of working below are what keep a single codebase from turning into a single committee.
+The channel is one repository and one deploy, so every team's feature ships together. The core services do not: Subscriptions and Payments release those on their own, through the [deployment gates](/patterns/between-services/deployment-gates/). This page is about the channel. The shared deploy is a fact about release mechanics. It must not become a fact about how decisions are made. The ways of working below are what keep a single codebase from turning into a single committee.
 
 ## Collaboration Default: Trunk-Based, No Pull Requests
 
@@ -40,16 +40,16 @@ A team usually has two places to change: its core service (own repo, own release
 
 **Inside your package**: change it, test it, ship it.
 
-**At a boundary, backwards compatible** (for example, adding an optional field or a new export): ship it. Part 3's rule applies: the provider can go first because existing consumers are unaffected.
+**At a boundary, backwards compatible** (for example, adding an optional field or a new export): ship it. The rule from [deployment gates](/patterns/between-services/deployment-gates/) applies: the provider can go first because existing consumers are unaffected.
 
-**At a boundary, breaking**: this needs agreement. Use the same approach as Part 3, expressed as team behaviour:
+**At a boundary, breaking**: this needs agreement. Use the same approach as for services, expressed as team behaviour:
 
 1. The changing team states the intent early, in the open, with the proposed new shape, and ideally pairs with someone from the affected team.
 2. The affected team adds or updates their expectation of it.
 3. CI shows what breaks and for whom.
 4. The change is split so each step is safe on its own (add the new, move consumers, remove the old).
 
-Inside the channel monorepo, step 4 is easier than across services, since both sides can change in one commit. (Changes to a core service API still follow the Part 3 gate.) It is tempting to do a big-bang change for that reason. Resist it. A big-bang commit forces two teams to change, test, and release in lockstep, which is the coupling this structure is meant to avoid.
+Inside the channel monorepo, step 4 is easier than across services, since both sides can change in one commit. (Changes to a core service API still follow the [deployment gates](/patterns/between-services/deployment-gates/).) It is tempting to do a big-bang change for that reason. Resist it. A big-bang commit forces two teams to change, test, and release in lockstep, which is the coupling this structure is meant to avoid.
 
 ```mermaid
 flowchart TD
@@ -88,7 +88,7 @@ One channel deploy means one shared channel pipeline (core services keep theirs)
 | Level | Owner | Purpose |
 |---|---|---|
 | Unit and component tests | Each team, in its package | Domain rules and UI behaviour |
-| Contract tests | Both sides of each boundary | Part 3 server contracts, component and export contracts |
+| Contract tests | Both sides of each boundary | Server contracts, component and export contracts |
 | One shared journey check | The journey owner (Subscriptions for "subscribe and pay") | Prove the seams work together |
 | Platform checks | Platform team | Extension points still satisfy the shell |
 
@@ -118,7 +118,7 @@ An incident during checkout could be Subscriptions, Payments, the platform, or t
 - A short, regular platform sync so feature teams can raise friction and the platform can announce changes to extension points.
 - Boundary changes announced in a single, visible place with the date, the owner, and what consumers must do.
 - Collaboration periods time-boxed and named (see [team interaction patterns](/patterns/across-teams/team-interaction-patterns/)), so it is clear when they end.
-- A periodic look at the team structure itself. If a pairing is constantly in collaboration mode, or a boundary keeps moving, that is a signal to reconsider ownership, not to add more meetings. This is the Inverse Conway Maneuver applied continuously (Conway's Law).
+- A periodic look at the team structure itself. If a pairing is constantly in collaboration mode, or a boundary keeps moving, that is a signal to reconsider ownership, not to add more meetings. This is the Inverse Conway Maneuver applied continuously.
 
 ## Warning Signs
 

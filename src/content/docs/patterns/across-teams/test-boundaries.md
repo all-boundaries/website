@@ -12,9 +12,9 @@ agent:
     - "Know when each runs in a trunk-based flow"
 ---
 
-Parts 1-3 gave every boundary of a service a named test. This page does the same for the channel layer: which boundaries exist in the monorepo, which test belongs to each, what is real and what is replaced, who owns it, and when it runs in a trunk-based flow.
+The earlier pages gave every boundary of a service a named test. This page does the same for the channel layer: which boundaries exist in the monorepo, which test belongs to each, what is real and what is replaced, who owns it, and when it runs in a trunk-based flow.
 
-The core services keep their own suites (Parts 1-3). Nothing here replaces them; the channel tests assume them.
+The core services keep their own suites (see [building one service](/journeys/build-one-service-testably/)). Nothing here replaces them; the channel tests assume them.
 
 ## The Boundaries
 
@@ -35,7 +35,7 @@ flowchart TB
     end
     Core["Core service<br/>(other repo)"]
     Browser -->|"b1 UI"| Shell
-    Adp -->|"b3 outbound HTTP, Part 3 Pact"| Core
+    Adp -->|"b3 outbound HTTP, Pact"| Core
     Shell -.->|"b7 whole channel"| Core
 ```
 
@@ -51,7 +51,7 @@ flowchart TB
 | 8 | Cross-team journey | **Journey check** | As (7), for one named journey | As (7) | Journey owner | [Journey](#8-journey-check) |
 | 9 | Cross-cutting guarantees | **Platform guarantee checks** | Shell + every feature | Core services | Platform | [Guarantees](#9-platform-guarantee-checks) |
 
-Same rule as Part 1: *things owned by someone else are never real.* Core services are contract mocks or static stubs. The monorepo's own pieces run for real.
+Same rule as inside a service: *things owned by someone else are never real.* Core services are contract mocks or static stubs. The monorepo's own pieces run for real.
 
 ## 1. Component test
 
@@ -71,15 +71,15 @@ Same rule as Part 1: *things owned by someone else are never real.* Core service
 
 Client and server of one feature are owned by one team and released together, so a consumer-driven Pact is overhead. Share a schema (OpenAPI or JSON Schema, with generated types) between `client/` and `server/` inside the feature. A breaking change then fails compilation, and the route is tested against the same schema. If the client and server ever split owners or release separately, promote this to a Pact.
 
-Optional on thin routes, as in Part 1: the closed-box channel test covers routing; create when validation or error mapping gets complex.
+Optional on thin routes, as inside a service: the closed-box channel test covers routing; create when validation or error mapping gets complex.
 
 ## 3. Outbound gateway test (HTTP): adapter
 
-**Proves:** the adapter calls the core service as promised in the Pact, parses its responses, classifies failures (transient versus permanent, Part 2), and enforces timeouts.
-**Cannot catch:** whether the real core service behaves like the mock (that is the provider verification in Part 3).
+**Proves:** the adapter calls the core service as promised in the Pact, parses its responses, classifies failures (transient versus permanent; see [error classification](/patterns/between-services/error-classification/)), and enforces timeouts.
+**Cannot catch:** whether the real core service behaves like the mock (that is the provider verification in [deployment gates](/patterns/between-services/deployment-gates/)).
 
-- Two halves, as in Part 1: a **contract mock** for shape and error responses; a **plain stub server** for timeouts and slow responses (a contract mock cannot delay).
-- The consumer Pact is published to the broker from the feature's pipeline. Assert only the fields and error codes the adapter branches on (minimal critical specification).
+- Two halves, as inside a service: a **contract mock** for shape and error responses; a **plain stub server** for timeouts and slow responses (a contract mock cannot delay).
+- The consumer Pact is published to the broker from the feature's pipeline. Assert only the fields and error codes the adapter branches on.
 - This is the boundary that makes "separate repos, one team" work: the owning team sees breakage from the broker the same day, in either direction.
 
 ## 4. Journey step test
@@ -88,8 +88,8 @@ Optional on thin routes, as in Part 1: the closed-box channel test covers routin
 **Cannot catch:** wire details of the adapters or UI rendering.
 
 - Real: step logic and state transitions.
-- Replaced: adapters, by fakes. The Part 1 [use-case test](/patterns/inside-a-service/use-case/) replaces only a failing save because it has a real database; the channel has no domain database, so there is nothing real to keep except the logic.
-- If the journey keeps state (a draft checkout, a session), that storage is a persistence boundary with its own test, run against a real container as in Part 1.
+- Replaced: adapters, by fakes. The [use-case test](/patterns/inside-a-service/use-case/) replaces only a failing save because it has a real database; the channel has no domain database, so there is nothing real to keep except the logic.
+- If the journey keeps state (a draft checkout, a session), that storage is a persistence boundary with its own test, run against a real container as inside a service.
 
 ## 5. Export contract test and boundary check
 
@@ -122,17 +122,17 @@ Owned by the platform. It is parameterised over every registered feature, so a n
 
 - Real: everything in the monorepo.
 - Replaced: core services, by static in-process stubs.
-- Same limits as Part 1's [closed-box test](/patterns/inside-a-service/closed-box-test/): one behaviour per test, far fewer than component tests, rule combinations tested lower down.
+- Same limits as the [closed-box test](/patterns/inside-a-service/closed-box-test/): one behaviour per test, far fewer than component tests, rule combinations tested lower down.
 - Ownership: the platform owns the harness (booting the channel, stub wiring). Each team owns the scenarios for its own feature in its own folder. No scenario spans two teams' features; that is the next one.
 
 ## 8. Journey check
 
 **Proves:** a named journey that spans teams works through the seams, e.g. "subscribe and pay" through plan choice, payment-method component, confirm, processing, active.
-**Cannot catch:** real core service behaviour (Part 5 and the Part 3 gates).
+**Cannot catch:** real core service behaviour (that needs a real end-to-end check and the [deployment gates](/patterns/between-services/deployment-gates/)).
 
 - It is the closed-box channel test applied to one journey crossing two features.
 - **One owner: the journey owner** (Subscriptions for "subscribe and pay").
-- **Few**: the happy path, plus one per major error scenario (declined card, Payments unavailable, pending that arrives late). This follows Part 1's rule of thumb.
+- **Few**: the happy path, plus one per major error scenario (declined card, Payments unavailable, pending that arrives late). This follows the rule of thumb for closed-box tests.
 - It is the only test where two feature teams' code runs together, so it is a permanent collaboration surface. Keep it small for that reason (team and test boundaries).
 
 ## 9. Platform guarantee checks
@@ -144,14 +144,14 @@ Run across all registered features, owned by the platform. These are the checks 
 
 ## Web-Specific Additions
 
-Parts 1-3 had no browser. The channel does, and it brings concerns that need their own checks. Some sharpen the boundaries above; some are new.
+The service-level pages had no browser. The channel does, and it brings concerns that need their own checks. Some sharpen the boundaries above; some are new.
 
 ### Sharpened boundaries
 
 | Approach | Where | Recommendation |
 |---|---|---|
 | **Component tests in a real browser** | #1 | Adopt. Keep jsdom for pure logic only. |
-| **Network-level mocking** (a service-worker mock) generated from the Pact or schema | #1, #7 | Adopt for the client. Real client and adapter code runs, and mocks cannot drift from the contract (Part 3's mock-drift problem). |
+| **Network-level mocking** (a service-worker mock) generated from the Pact or schema | #1, #7 | Adopt for the client. Real client and adapter code runs, and mocks cannot drift from the contract (the mock-drift problem; see [stopping contract drift](/journeys/stop-contract-drift/)). |
 | **Shared schema and generated types** | #2 | Adopt. Pact stays the contract for #3, the core service. |
 | **User-centric queries** (by role and label) | #1 | Adopt as a convention. |
 
@@ -171,7 +171,7 @@ Each new test names its owner and a level. The performance budget in particular 
 
 ### Production signals
 
-On the web, behaviour in production tells you things no pipeline can. These pair well with trunk-based releases and belong to Part 5/6:
+On the web, behaviour in production tells you things no pipeline can. These pair well with trunk-based releases and belong to a later stage:
 
 - **Synthetic journey** against production with a test account, on a schedule.
 - **Real user monitoring and client error tracking**, tagged by feature and team.
@@ -180,16 +180,16 @@ On the web, behaviour in production tells you things no pipeline can. These pair
 ### Deliberately not added
 
 - Per-page screenshot tests: maintenance cost, little signal beyond the design system's visual tests.
-- Full browser journeys against real core services in the pipeline: the shared-E2E bottleneck again (Part 5).
+- Full browser journeys against real core services in the pipeline: the shared-E2E bottleneck again.
 - Micro-frontend compatibility tests: only if the channel later splits into independent deploys (see [monorepo](/patterns/across-teams/monorepo/)).
 
 ## What Does Not Get a Test Here
 
 | Candidate | Decision | Reason |
 |---|---|---|
-| Domain rules (proration, retries, card limits) | Tested in the core services | They live in Parts 1-3 |
-| Core service behaviour behind the adapter | Not tested in the channel | Provider verification, Part 3 |
-| Full browser run against real core services in the pipeline | Not by default | That is Part 5; slow, flaky, shared bottleneck |
+| Domain rules (proration, retries, card limits) | Tested in the core services | They live in the service-level patterns |
+| Core service behaviour behind the adapter | Not tested in the channel | Provider verification |
+| Full browser run against real core services in the pipeline | Not by default | That is a separate end-to-end check; slow, flaky, shared bottleneck |
 | Pixel-level visuals for every page | Design system only (visual regression) | Feature pages inherit the components; per-page screenshots multiply maintenance |
 | Duplicate checks of the same behaviour at several levels | Avoid | Pick the lowest level that can prove it |
 
@@ -208,7 +208,7 @@ On the web, behaviour in production tells you things no pipeline can. These pair
 | Platform guarantees (incl. accessibility, visual, performance, CSP) | Cross-cutting promises | Feature logic; accessibility only partly |
 | **All of the above** | **The channel in isolation, against promised contracts** | **Whether deployed core services and the deployed channel really work together; production behaviour** |
 
-The last row is the handoff to the Part 3 deploy gates (compatibility) and Part 5 (a minimal real end-to-end check).
+The last row is the handoff to the [deployment gates](/patterns/between-services/deployment-gates/) (compatibility) and to a minimal real end-to-end check.
 
 ## When Each Runs (Trunk-Based)
 
@@ -228,7 +228,7 @@ flowchart LR
         H["Platform guarantees: visual, performance budget, CSP, flags"]
     end
     subgraph Post["After release"]
-        I["Synthetic journey, real user monitoring,<br/>progressive rollout (Part 5/6)"]
+        I["Synthetic journey, real user monitoring,<br/>progressive rollout (later stage)"]
     end
     Pre --> Trunk --> Post
 ```

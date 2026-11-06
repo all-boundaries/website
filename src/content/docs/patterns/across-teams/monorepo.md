@@ -18,7 +18,7 @@ The earlier pages say "a package per team" but never show the repository. This p
 
 ## The Shape of the Decision
 
-- **Core services stay where Parts 1-3 left them.** Subscriptions and Payments each have their own repository, database, pipeline and deploy. They expose APIs and events. Part 3 (Pact Broker, "can I deploy?") applies to them unchanged.
+- **Core services stay as they are in the earlier journeys.** Subscriptions and Payments each have their own repository, database, pipeline and deploy. They expose APIs and events. The Pact Broker and its "can I deploy?" check apply to them unchanged.
 - **The customer-facing channel is the only monorepo and the only modular monolith.** One repository, one deploy, one package per team.
 - **Each team owns both halves.** Subscriptions owns its core service *and* how customers use subscriptions (its feature in the channel). Payments likewise. The Platform team owns the frame.
 
@@ -40,16 +40,16 @@ flowchart LR
     subgraph RepoP["Repo: payments-service (own deploy)"]
         SVP["Payments core service"]
     end
-    FS -->|"HTTP API<br/>Pact (Part 3)"| SVS
-    FP -->|"HTTP API<br/>Pact (Part 3)"| SVP
-    SVS -->|"Part 2/3 contracts"| SVP
+    FS -->|"HTTP API<br/>Pact"| SVS
+    FP -->|"HTTP API<br/>Pact"| SVP
+    SVS -->|"service contracts"| SVP
     classDef t1 fill:#fdf0dc,stroke:#c98a1b
     classDef t2 fill:#e3f5e8,stroke:#2f8f4e
     class FS,SVS t1
     class FP,SVP t2
 ```
 
-The colours show team ownership: each team spans a core service and a feature slice, joined by the same Part 3 mechanism as before.
+The colours show team ownership: each team spans a core service and a feature slice, joined by the same Pact mechanism as before.
 
 ## Layout
 
@@ -63,7 +63,7 @@ coffee-channel/
 │   ├── subscriptions/              # owner: Subscriptions
 │   │   ├── client/                 # plans, checkout journey, billing pages
 │   │   ├── server/                 # channel-side calls to subscriptions-service
-│   │   │   └── adapter/            # the gateway: consumer side of the Part 3 Pact
+│   │   │   └── adapter/            # the gateway: consumer side of the Pact
 │   │   └── index.ts                # public surface (exports)
 │   └── payments/                   # owner: Payments
 │       ├── client/                 # payment-method component, card management
@@ -86,9 +86,9 @@ coffee-channel/
 ### Outside the monorepo
 
 ```
-subscriptions-service/   # Parts 1-3: src/, test/, db/, pacts/  (owner: Subscriptions)
-payments-service/        # Parts 1-3: src/, test/, db/, pacts/  (owner: Payments; today: payments/)
-pact-broker/             # shared registry from Part 3
+subscriptions-service/   # src/, test/, db/, pacts/  (owner: Subscriptions)
+payments-service/        # src/, test/, db/, pacts/  (owner: Payments; today: payments/)
+pact-broker/             # shared registry
 ```
 
 The channel's `features/*/server/adapter/` is a **consumer** of the core service. It publishes a Pact to the broker like any other consumer, so the core service's team learns about channel needs from CI, not a meeting.
@@ -107,7 +107,7 @@ flowchart TB
     Feat -->|"channel pipeline, shared release"| ProdC["Channel in production"]
 ```
 
-Two release cadences for one team: the service ships on its own; the feature ships with the channel. Because the team owns both sides of the adapter Pact, an API change and its channel update can be sequenced by one team (add to service, deploy, update adapter, remove old), which is the Part 3 pattern applied inside a team.
+Two release cadences for one team: the service ships on its own; the feature ships with the channel. Because the team owns both sides of the adapter Pact, an API change and its channel update can be sequenced by one team (add to service, deploy, update adapter, remove old), which is the [deployment gates](/patterns/between-services/deployment-gates/) pattern applied inside a team.
 
 ## Dependency Rules (what the boundary check enforces)
 
@@ -143,7 +143,7 @@ flowchart LR
     Aff --> PkgP["payments: component + adapter tests"]
     Aff --> Plat["platform: extension-point + boundary checks"]
     PkgS & PkgP --> Pub["Publish consumer Pacts"]
-    Pub --> CID["Part 3: can-i-deploy vs deployed services"]
+    Pub --> CID["can-i-deploy vs deployed services"]
     Plat --> Journey["journey-check (1 test)"]
     CID --> Journey --> Rel["Release channel"]
 ```
@@ -154,7 +154,7 @@ The channel pipeline asks the broker whether the channel's adapters are compatib
 
 - A new team (say Loyalty) gets its own `loyalty-service` repo plus `features/loyalty/`. If the platform's extension points hold, no platform change is needed.
 - If checkout needs its own team, move it from `features/subscriptions/client/checkout` to `features/checkout/`. It only used exports, so this is a rename plus an `OWNERS` line.
-- If the channel deploy becomes a bottleneck, features can later become independently deployed micro-frontends. The `index.ts` surface becomes a network contract, and Part 3 tooling already covers that.
+- If the channel deploy becomes a bottleneck, features can later become independently deployed micro-frontends. The `index.ts` surface becomes a network contract, and the Pact tooling already covers that.
 
 ## Checks That Prove the Layout Is Honest
 

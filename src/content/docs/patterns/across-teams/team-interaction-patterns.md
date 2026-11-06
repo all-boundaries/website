@@ -14,7 +14,7 @@ agent:
 
 ## Three Modes
 
-Team Topologies describes three ways two teams can relate (Team Topologies):
+Team Topologies describes three ways two teams can relate:
 
 - **Collaboration**: working closely together for a time-boxed period to discover something. High bandwidth, high cost.
 - **X-as-a-Service**: one team provides, the other consumes, with little need to talk. Low cost when the interface is stable.
@@ -28,7 +28,7 @@ The useful discipline is to choose the mode deliberately for each pairing, and t
 |---|---|---|---|
 | Platform to Subscriptions | X-as-a-Service | Stable shell, design system, extension points | A new platform capability being designed: temporary collaboration |
 | Platform to Payments | X-as-a-Service | Same | Same |
-| Subscriptions to Payments (server) | X-as-a-Service via contract | Part 3 contracts and the Pact Broker | A new integration shape (for example, a new charge flow): temporary collaboration |
+| Subscriptions to Payments (server) | X-as-a-Service via contract | Contract tests and the Pact Broker | A new integration shape (for example, a new charge flow): temporary collaboration |
 | Subscriptions to Payments (journey UI) | Collaboration, then X-as-a-Service | The journey is new, so the shape of the payment-method component is still being found | Once stable, Payments offers it as a service and Subscriptions just consumes |
 | Platform to both (adopting a practice) | Facilitation | For example, introducing accessibility checks or telemetry conventions | The practice is adopted, platform steps back |
 
@@ -38,7 +38,7 @@ The Subscriptions and Payments UI pairing is the interesting one. At first they 
 flowchart LR
     Plat["Platform"] -->|X-as-a-Service| Sub["Subscriptions"]
     Plat -->|X-as-a-Service| Pay["Payments"]
-    Sub -->|"X-as-a-Service<br/>(Part 3 contracts)"| Pay
+    Sub -->|"X-as-a-Service<br/>(contract tests)"| Pay
     Sub <-.->|"Collaboration, time-boxed<br/>(payment component UI)"| Pay
     Plat -.->|Facilitation, ends| Sub
     Plat -.->|Facilitation, ends| Pay
@@ -48,7 +48,7 @@ flowchart LR
 
 The test strategy follows the mode (team and test boundaries):
 
-- **X-as-a-Service** pairs rely on contract tests. The consumer states what it needs, the provider verifies it, and nobody needs a meeting. This is Part 3.
+- **X-as-a-Service** pairs rely on contract tests. The consumer states what it needs, the provider verifies it, and nobody needs a meeting. This is covered in [stopping contract drift](/journeys/stop-contract-drift/).
 - **Collaboration** pairs can afford shared, higher-level tests because they are working together anyway. But a shared end-to-end suite that persists after collaboration ends forces collaboration on everyone, forever.
 
 A shared end-to-end suite is therefore a cost, not a safety net by default. Keep a small number, owned explicitly, for journeys that genuinely span teams.
@@ -87,7 +87,7 @@ Facilitation has an end date. If the platform team is still hand-holding the sam
 
 ## Cognitive Load Is the Constraint
 
-Each team can hold only so much (team cognitive load). Interaction modes spend that budget:
+Each team can hold only so much. Interaction modes spend that budget:
 
 - Collaboration with another team costs load on both sides.
 - Every extra team you must understand to do your job adds load.

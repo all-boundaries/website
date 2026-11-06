@@ -34,7 +34,7 @@ These are the things every feature team would otherwise rebuild, differently:
 | Build, test and deploy pipeline | Release mechanics are not a domain concern |
 | Observability defaults | Traces and logs correlate across teams |
 
-In Team Topologies terms this is a platform team whose job is to take extraneous load off stream-aligned teams (team cognitive load). A Subscriptions engineer should spend their capacity on subscription rules, not on how a modal behaves or how a session is refreshed.
+In Team Topologies terms this is a platform team whose job is to take extraneous load off stream-aligned teams (see the note on team cognitive load in [team interaction patterns](/patterns/across-teams/team-interaction-patterns/)). A Subscriptions engineer should spend their capacity on subscription rules, not on how a modal behaves or how a session is refreshed.
 
 ```mermaid
 flowchart LR
@@ -74,7 +74,7 @@ The platform and the feature teams meet at the extension points. For the coffee 
 - The shell provides context to those pages: authenticated customer, theme, locale, error boundary.
 - The platform promises not to break these without notice. The feature team promises not to reach past them.
 
-This is the same idea as Part 3, one layer up. The agreement is small, explicit, and checkable. Where Part 3 verifies server payloads, here the checks are things like "does every package's exported route registration still satisfy the shell's expectations". The check belongs in CI so a breaking change surfaces before merge, not in someone else's release.
+This is the same idea as the contracts between services, one layer up. The agreement is small, explicit, and checkable. Where service contracts verify server payloads, here the checks are things like "does every package's exported route registration still satisfy the shell's expectations". The check belongs in CI so a breaking change surfaces before merge, not in someone else's release.
 
 ## Interaction Mode: X-as-a-Service
 
@@ -92,7 +92,7 @@ Payments wants to add a new saved-card limit setting. What do they need from any
 
 - A page in their package, using the design system: no ticket to the platform.
 - A route registered through the existing extension point: no ticket.
-- Server changes covered by their own tests and Part 3 contracts: only Subscriptions is told, via the contract pipeline, if it matters to them.
+- Server changes covered by their own tests and service contracts: only Subscriptions is told, via the contract pipeline, if it matters to them.
 - Release through the shared pipeline: no custom process.
 
 Nothing in that list needs a meeting. That is what autonomy means in practice: the common case needs no coordination.
