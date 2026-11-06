@@ -9,12 +9,12 @@ A product subscription app is split across teams. Each owns one service:
 
 | Service | Owns |
 |---|---|
-| **Subscriptions** (this part) | plans, subscription lifecycle, billing cycle, renewals, cancellation |
+| **Subscriptions** (this journey) | plans, subscription lifecycle, billing cycle, renewals, cancellation |
 | Inventory | product stock and reservations |
 | Payments | charging, refunds, payment methods |
 | Accounts | users, profiles, account closure |
 
-Subscriptions carries the most behaviour, so it carries Part 1.
+Subscriptions carries the most behaviour, so this journey follows it.
 
 ## The service and its edges
 
@@ -60,7 +60,7 @@ One page per boundary. "Gateway" is the umbrella for code that crosses the servi
 | Messaging, outbound (`SubscriptionRenewed`) | **Outbound gateway test (messaging)** | Publisher; Redpanda container | Nothing | [messaging-outbound](/patterns/inside-a-service/outbound-messaging/) |
 | Whole service | **Closed-box component test** | Everything the service owns, in containers | Remote services, by static stubs | [closed-box](/patterns/inside-a-service/closed-box-test/) |
 
-The contract halves of the gateway tests, and who owns the files they produce, are Part 3.
+The contract halves of the gateway tests, and who owns the files they produce, are covered in [stopping contract drift](/journeys/stop-contract-drift/).
 
 ## Decisions that shape these pages
 
@@ -68,7 +68,7 @@ The contract halves of the gateway tests, and who owns the files they produce, a
 2. **Real infrastructure in containers, not in-memory lookalikes.** Anything that needs a database or a broker uses Testcontainers with the production engine and the production migrations. In-memory substitutes differ from the real thing where it matters (types, constraints, ordering, delivery semantics), and the time they save is small. The cost is managed by starting each container once per run and resetting state between tests. Things owned by *other* teams are never containers: they are contract mocks or static stubs.
 3. **Container reuse keeps feedback fast.** One PostgreSQL and one Redpanda container start per test run, not per test. Databases reset state by truncating tables; the broker resets by creating topics per run and using unique message ids. Developers see near-instant repeat runs locally (thanks to Docker reuse), and the suite is easier to distribute than one that needs a container-per-test-file.
 4. **Charging is a synchronous request with an asynchronous answer.** Subscriptions asks Payments to charge with `POST /charges` and receives `pending` at once. It treats the charge as unsettled until Payments calls back on the webhook. The request carries an idempotency key, so a retry after a timeout cannot charge twice, and the webhook carries an event id, so a repeated delivery cannot be applied twice. The payment rules (grace period, restart) stay in the domain; HTTP is only how the facts arrive.
-5. **Closed-box tests are kept, with limits.** Rainsberger's critique is that tests depending on several pieces of non-trivial behaviour multiply code paths. What keeps closed-box tests on the safe side of it: one behaviour per test, one deployable owned by one team, every neighbour replaced by a controlled stub, and far fewer closed-box tests than domain tests (as a rule of thumb, one per happy-path journey plus one per major error scenario involving multiple components). Rule combinations are tested in the domain tests. This is this series' position, reasoned from Clemson and Rainsberger; neither states it.
+5. **Closed-box tests are kept, with limits.** Rainsberger's critique is that tests depending on several pieces of non-trivial behaviour multiply code paths. What keeps closed-box tests on the safe side of it: one behaviour per test, one deployable owned by one team, every neighbour replaced by a controlled stub, and far fewer closed-box tests than domain tests (as a rule of thumb, one per happy-path journey plus one per major error scenario involving multiple components). Rule combinations are tested in the domain tests. This is the position taken here, reasoned from Clemson's and Rainsberger's work; neither states it.
 6. **Every boundary has a test; exceptions are recorded.** The exceptions are in the table below.
 
 ### Exceptions for Subscriptions
@@ -98,17 +98,15 @@ The contract halves of the gateway tests, and who owns the files they produce, a
 | Use case test | Load → domain → store are connected | Rule details (domain tests) or how calls arrive (gateway tests) |
 | Persistence test | Queries work against real engine | Business rules; only validates round-trips |
 | Inbound gateway tests (HTTP, messaging) | Calls map to correct use cases and responses map correctly | Whether the domain does the right thing (domain tests) |
-| Outbound gateway tests | Calls to neighbours are shaped as promised (Pact) | Whether neighbours really behave like the mock (Part 3) |
+| Outbound gateway tests | Calls to neighbours are shaped as promised (Pact) | Whether neighbours really behave like the mock (see [stopping contract drift](/journeys/stop-contract-drift/)) |
 | Closed-box test | All layers work together for one behaviour | Anything about neighbours; static stubs replace them |
 | **All of the above** | **One service in isolation** | **Whether Inventory, Payments and Accounts really match what we assumed; orchestration across services** |
 
-The last row is the hand-off to Part 2 (a second service), Part 3 (contracts and mock drift), and Part 5 (end-to-end journeys).
+The last row is the hand-off to [adding a second service](/journeys/add-a-second-service/), to [stopping contract drift](/journeys/stop-contract-drift/) (contracts and mock drift), and to a few end-to-end journeys.
 
-## Series outline
+## The journeys
 
-1. **Inside one service: Subscriptions.** This part.
-2. **A second service: Payments.** Gateway-heavy, little domain logic. It answers `POST /charges` and calls the Subscriptions webhook. Where do the tests concentrate?
-3. **Across the boundary.** Contracts between Subscriptions, Payments and Inventory, and mock drift.
-4. **Across teams.** Who owns the contracts, the pipelines and the deploy gates; how breaking changes are handled.
-5. **Whole journey.** What is left for end-to-end tests.
-6. **Organisation and business goals.** Team boundaries, cognitive load, feedback time, release frequency, incident cost.
+1. **Inside one service: Subscriptions.** This journey.
+2. **A second service: Payments.** Gateway-heavy, little domain logic. It answers `POST /charges` and calls the Subscriptions webhook. Where do the tests concentrate? See [add a second service](/journeys/add-a-second-service/).
+3. **Across the boundary.** Contracts between Subscriptions, Payments and Inventory, and mock drift. See [stop contract drift](/journeys/stop-contract-drift/).
+4. **Across teams.** Who owns the contracts, the pipelines and the deploy gates; how breaking changes are handled. See [one product, several teams](/journeys/one-product-several-teams/).

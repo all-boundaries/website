@@ -22,7 +22,7 @@ Subscriptions: "We read failureReason to decide the grace period."
 Production:    the grace period silently stops depending on why the payment failed.
 ```
 
-This is the mock drift problem. A test double is only as good as its resemblance to the real thing, and the resemblance is checked by nobody. The same holds for every static stub and hand-built payload in Parts 1 and 2.
+This is the mock drift problem. A test double is only as good as its resemblance to the real thing, and the resemblance is checked by nobody. The same holds for every static stub and hand-built payload in the Subscriptions and Payments journeys.
 
 ## The approach
 
@@ -64,7 +64,7 @@ In a pact, the **consumer** is the side that reads. That is not always the side 
 
 The webhook is modelled as a message contract: the body is what is agreed, and the HTTP delivery, the signature and the status codes are covered by Subscriptions' [webhook tests](/patterns/inside-a-service/inbound-http-gateway/#the-payments-webhook). Payments never writes a pact that says what Payments sends. It verifies what Subscriptions says it needs.
 
-**The processor is different.** It is a third party: it will not replay Payments' pact, set up provider states, or join the broker. Inventory and Accounts follow the same pattern as Payments, because a team in the company sits on the other side. For the processor, the contract mock from Part 2 stays an assumption, re-checked by scheduled learning tests against the processor's sandbox. The broker, and the "can I deploy" gate, only cover what both sides take part in.
+**The processor is different.** It is a third party: it will not replay Payments' pact, set up provider states, or join the broker. Inventory and Accounts follow the same pattern as Payments, because a team in the company sits on the other side. For the processor, the contract mock for the processor stays an assumption, re-checked by scheduled learning tests against the processor's sandbox. The broker, and the "can I deploy" gate, only cover what both sides take part in.
 
 ## Three topics
 
@@ -89,7 +89,7 @@ Versioned contracts per environment, recording deployments, the gate in each pip
 | `can-i-deploy` | This version has been verified against the versions running in the target environment | Consumers that do not use the broker; the third-party processor |
 | **All of the above** | **Message-level compatibility of the services that take part** | **Whether a charge really happens once, whether the webhook arrives after the commit, whether Payments retries as Subscriptions assumes** |
 
-The last row is deliberate. A pact is an example of one message, not a specification of behaviour. Behaviour is tested inside each service (Parts 1 and 2), and the few behaviours that only exist across both are Part 5.
+The last row is deliberate. A pact is an example of one message, not a specification of behaviour. Behaviour is tested inside each service (see [building one service](/journeys/build-one-service-testably/) and [adding a second service](/journeys/add-a-second-service/)), and the few behaviours that only exist across both are left to a few end-to-end journeys.
 
 ## Decisions that shape these pages
 
@@ -99,6 +99,6 @@ The last row is deliberate. A pact is an example of one message, not a specifica
 4. **Assert shape, not wording.** Matchers state the type and form of a field, not its value. A pact that pins an exact message text blocks harmless changes.
 5. **Semantics stay manual.** Nothing here checks that two tests, one on each side, agree about behaviour. A person has to keep them in step, which is a good reason to keep the surface small.
 
-## Next: Part 4
+## Next
 
-Part 4 moves from services to teams: who owns the contracts, the pipelines and the gates, and what happens at the point where several teams' work reaches one customer.
+[One product, several teams](/journeys/one-product-several-teams/) moves from services to teams: who owns the contracts, the pipelines and the gates, and what happens at the point where several teams' work reaches one customer.
