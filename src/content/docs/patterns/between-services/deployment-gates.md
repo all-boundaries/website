@@ -155,4 +155,4 @@ Those gaps are the reason for keeping a few end-to-end journeys.
 
 ## Next
 
-[One product, several teams](/journeys/one-product-several-teams/) looks at the teams around these gates.
+[Channel monorepo layout](/patterns/across-teams/monorepo/) is the first pattern about the teams around these gates. The [One product, several teams](/journeys/one-product-several-teams/) journey puts them in order. [Contracts with a third party](/patterns/between-services/bidirectional-contracts/) covers the neighbour that cannot join the broker.

@@ -52,8 +52,8 @@ One page per boundary. "Gateway" is the umbrella for code that crosses the servi
 | Boundary | Test name | Real | Replaced | Page |
 |---|---|---|---|---|
 | Domain logic | **Domain test** (sociable) | Domain objects | Nothing; the domain has no dependencies | [domain](/patterns/inside-a-service/domain/) |
-| Use case | **Use case test** | Use case, domain, PostgreSQL container | Only a failing `save`, by a spy | [use-case](/patterns/inside-a-service/use-case/) |
 | Persistence | **Persistence test** | PostgreSQL container | Nothing | [persistence](/patterns/inside-a-service/persistence/) |
+| Use case | **Use case test** | Use case, domain, PostgreSQL container | Only a failing `save`, by a spy | [use-case](/patterns/inside-a-service/use-case/) |
 | HTTP, inbound (API and Payments webhook) | **Inbound gateway test (HTTP)** | Real server, routes; database for the webhook's duplicate check | Use case | [http](/patterns/inside-a-service/inbound-http-gateway/) |
 | HTTP, outbound (Payments, Inventory) | **Outbound gateway test (HTTP)** | Gateway, HTTP client | Remote service, by a contract mock server | [gateway](/patterns/inside-a-service/outbound-http-gateway/) |
 | Messaging, inbound (`AccountClosed`) | **Inbound gateway test (messaging)** | Handler; PostgreSQL and Redpanda containers | Use case, in the handler tests | [messaging-inbound](/patterns/inside-a-service/inbound-messaging/) |
@@ -110,3 +110,7 @@ The last row is the hand-off to [adding a second service](/journeys/add-a-second
 2. **A second service: Payments.** Gateway-heavy, little domain logic. It answers `POST /charges` and calls the Subscriptions webhook. Where do the tests concentrate? See [add a second service](/journeys/add-a-second-service/).
 3. **Across the boundary.** Contracts between Subscriptions, Payments and Inventory, and mock drift. See [stop contract drift](/journeys/stop-contract-drift/).
 4. **Across teams.** Who owns the contracts, the pipelines and the deploy gates; how breaking changes are handled. See [one product, several teams](/journeys/one-product-several-teams/).
+
+## Next
+
+[Add a second service](/journeys/add-a-second-service/) follows the other half of the exchange: Payments, where the tests concentrate on gateways rather than domain logic.

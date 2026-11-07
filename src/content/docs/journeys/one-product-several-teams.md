@@ -33,11 +33,11 @@ Who works with whom, and in which mode: collaboration, X-as-a-Service, facilitat
 ### [Integration boundaries](/patterns/across-teams/integration-boundaries/)
 Where a team's responsibility ends. Package exports, server APIs, UI extension points, and who owns a journey that crosses teams ("subscribe and pay").
 
-### [Test boundaries in the channel](/patterns/across-teams/test-boundaries/)
-The test that belongs to each boundary in the channel, what is real and replaced, who owns it, and when it runs under trunk-based development.
-
 ### [Failure and degradation](/patterns/across-teams/failure-and-degradation/)
 What the customer sees when a core service is slow, down, or still processing, and who decides. Connects [error classification](/patterns/between-services/error-classification/) to the channel.
+
+### [Test boundaries in the channel](/patterns/across-teams/test-boundaries/)
+The test that belongs to each boundary in the channel, what is real and replaced, who owns it, and when it runs under trunk-based development.
 
 ### [Ways of working in the channel monorepo](/patterns/across-teams/ways-of-working/)
 Change, review, release, and incidents when several teams share one codebase and one deploy for the customer-facing channel. How to keep shared deployment from becoming shared coupling.
@@ -82,3 +82,7 @@ sequenceDiagram
 ## The Claim
 
 A shared codebase does not force shared decisions. Autonomy comes from clear ownership and a small, stable set of agreements, not from separate repositories or separate deploys. Cohesion comes from the same small set of agreements, owned by a team whose job is to make everyone else faster.
+
+## Where next
+
+The patterns behind each topic are listed under [Across teams](/patterns/across-teams/). The [glossary](/reference/glossary/) will collect the shared terms.

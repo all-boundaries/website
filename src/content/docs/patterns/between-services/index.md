@@ -5,10 +5,10 @@ description: Contracts, webhooks, idempotency and deploy gates for services owne
 
 Contracts, webhooks, idempotency and deploy gates for services owned by different teams.
 
-- [Contracts with the processor and Subscriptions](/patterns/between-services/bidirectional-contracts/)
-- [Consumer-driven contracts with Pact](/patterns/between-services/consumer-driven-contracts/)
-- [Contract drift and breaking changes](/patterns/between-services/contract-drift/)
-- [Deployment gates with can-i-deploy](/patterns/between-services/deployment-gates/)
 - [Error classification](/patterns/between-services/error-classification/)
 - [Synchronous call, asynchronous outcome](/patterns/between-services/synchronous-inbound-pending/)
 - [Webhook idempotency](/patterns/between-services/webhook-idempotency/)
+- [Consumer-driven contracts with Pact](/patterns/between-services/consumer-driven-contracts/)
+- [Contract drift and breaking changes](/patterns/between-services/contract-drift/)
+- [Deployment gates with can-i-deploy](/patterns/between-services/deployment-gates/)
+- [Contracts with the processor and Subscriptions](/patterns/between-services/bidirectional-contracts/)
