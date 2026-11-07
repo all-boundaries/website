@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "node scripts/check-sidebar.mjs && astro check"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",
